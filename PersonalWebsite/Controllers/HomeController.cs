@@ -14,7 +14,7 @@
         private readonly ILogger<HomeController> _logger;
         private readonly ICVService _cvService;
 
-        public HomeController(ILogger<HomeController> logger, ICVService cvService)
+        public HomeController(ILogger<HomeController> logger, ICVService cvService) 
         {
             _logger = logger;
             _cvService = cvService;
@@ -23,7 +23,6 @@
         public IActionResult Index()
         {
             var viewModel = _cvService.GetFirstOrDefault<IndexViewModel>();
-            ViewData["PageOwnerName"] = viewModel.Name;
             return View(viewModel);
         }
 

@@ -28,7 +28,9 @@ namespace PersonalWebsite
         {
             services
                 .AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services
                 .AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
@@ -47,6 +49,7 @@ namespace PersonalWebsite
             services.AddRazorPages();
 
             services.AddAutoMapper(GetType());
+            services.AddTransient<INameService, NameService>();
             services.AddTransient<ICVService, CVService>();
         }
 

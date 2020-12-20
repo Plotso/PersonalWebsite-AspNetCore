@@ -18,12 +18,7 @@
         }
         public T GetFirstOrDefault<T>()
         {
-            var cv = _dbContext.CVs
-                .Include(c => c.EducationRecords)
-                .Include(c => c.ExperienceRecords)
-                .Include(c => c.Skills)
-                .FirstOrDefault();
-            Console.WriteLine(cv?.EducationRecords.Count);
+            var cv = _dbContext.CVs.FirstOrDefault();
             return _mapper.Map<T>(cv);
         }
     }
