@@ -3,13 +3,13 @@
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using PersonalWebsite.Data.Configuration;
-    using PersonalWebsite.Models.CV;
     using PersonalWebsite.Models.Data;
     using PersonalWebsite.Models.Data.Identity;
     using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models.Data.CV;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {

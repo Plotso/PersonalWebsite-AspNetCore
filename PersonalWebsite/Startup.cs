@@ -9,8 +9,10 @@ namespace PersonalWebsite
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Data;
+    using Data.Seeding;
     using Microsoft.AspNetCore.Mvc;
     using Models.Data.Identity;
+    using Services;
 
     public class Startup
     {
@@ -45,11 +47,20 @@ namespace PersonalWebsite
             services.AddRazorPages();
 
             services.AddAutoMapper(GetType());
+            services.AddTransient<ICVService, CVService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // Seed data on application startup
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                dbContext.Database.Migrate();
+                new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+            }
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

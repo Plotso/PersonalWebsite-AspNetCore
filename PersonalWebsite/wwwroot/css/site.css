@@ -68,4 +68,108 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+  
+}/* Custom CSS 
+-------------------------------------------------- */
+h2 {
+  text-align: center;
+}
+
+.hidden-section {
+  display: none;
+}
+
+.form-group {
+  margin-right: 5%;
+}
+
+#personal-page {
+  position: relative;
+}
+
+#personal-page img {
+  position: absolute;
+  top: 1%;
+  right: 5%;
+}
+
+#gallery img {
+  max-width: 33%;
+  max-height: 60%;
+}
+
+.general-information {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 0px;
+  margin-bottom: 3%;
+}
+
+.general-information p{
+  padding-right: 10%;
+}
+
+.section h5 {
+  color: gray;
+  text-align: center;
+}
+
+#position {
+  color: rgb(64, 206, 64);
+}
+
+.section  li  span {
+  color: rgb(64, 206, 64);
+  right: 5%;
+}
+
+.comments-container {
+  margin: 1%;
+}
+
+.activity-details {
+  position: relative;
+  top: 10%;
+  right: 5%;
+  font-size: 65%;
+  margin-left: 5%;
+}
+
+.current {
+  padding-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-width: 1.1px;
+  width: fit-content;
+  color: grey;
+}
+
+.skills-list li {
+  padding-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-width: 1.1px;
+  width: fit-content;
+}
+
+.skills-group{
+  text-align: center;
+  color: rgb(64, 206, 64);
+}
+
+.contacts {
+  color: rgb(77, 167, 226);
+}
+
+.short-presentation {
+  margin-right: 15%;
+}
+
+@media screen and (max-width: 850px){
+  #personal-page img {
+    display: none;
+  }
+
+  #gallery img {
+    max-width: 100%;
+    height: auto;
+  }
 }

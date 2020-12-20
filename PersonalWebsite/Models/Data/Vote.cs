@@ -2,8 +2,9 @@
 {
     using PersonalWebsite.Models.Data.Identity;
     using System.ComponentModel.DataAnnotations;
+    using Abstract;
 
-    public class Vote
+    public class Vote : BaseModel<int>
     {
         public int CommentId { get; set; }
 

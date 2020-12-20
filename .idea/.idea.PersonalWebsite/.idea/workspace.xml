@@ -23,17 +23,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5886f40-f544-4bd6-b1b3-a21ce11c7e4d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Data/IdentityOptionsProvider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Mapping/ConventionalMappingProfile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Mapping/IMapExplicitly.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Mapping/IMapFrom.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Mapping/IMapTo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Common/GlobalConstants.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Common/ViewModelExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/ApplicationDbContextSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/BackupSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/CVSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/EducationsSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/ExperiencesSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/ISeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/RolesSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/SkillsSeeder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Models/ViewModels/Home/EducationViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Models/ViewModels/Home/ExperienceViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Models/ViewModels/Home/IndexViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Models/ViewModels/Home/SkillViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Services/CVService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalWebsite/Services/ICVService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PersonalWebsite/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PersonalWebsite/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PersonalWebsite/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PersonalWebsite/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PersonalWebsite/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalWebsite/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Data/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalWebsite/Data/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Data/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalWebsite/Models/CV/CV.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Models/Data/CV/CV.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalWebsite/Models/CV/Education.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Models/Data/CV/Education.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalWebsite/Models/CV/Experience.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Models/Data/CV/Experience.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalWebsite/Models/CV/Skill.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Models/Data/CV/Skill.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalWebsite/Models/Data/Vote.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Models/Data/Vote.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PersonalWebsite/PersonalWebsite.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/PersonalWebsite.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PersonalWebsite/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalWebsite/Views/Shared/Error.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Views/Shared/Error.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalWebsite/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalWebsite/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalWebsite/Views/Shared/_LoginPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/Views/Shared/_LoginPartial.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalWebsite/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalWebsite/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalWebsite/wwwroot/css/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,20 +66,53 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2BC5ED24-0D5C-402C-8B6A-BD14FFCEE267/1E0/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B0DB0FE9-4FD4-48F7-BC71-8D68078A7AD1/A/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/DF06744C-04ED-4CE3-8BEB-869230243C29/8/Queryable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5723D2C3-5851-4D78-89A9-838781296FB1/1E/ServiceProviderEngineScope.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F055C0ED-DD91-4EF9-9A0A-EE4E82D6B1F9/1/ServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/E861A8F7-CA3E-4C3E-8C40-5FD7641920A2/2/IdentityDbContext.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/PersonalWebsite/Views/Shared/Error.cshtml" />
-        <option value="$PROJECT_DIR$/PersonalWebsite/Controllers/HomeController.cs" />
         <option value="$PROJECT_DIR$/PersonalWebsite/Data/IdentityOptionsProvider.cs" />
         <option value="$PROJECT_DIR$/PersonalWebsite/Mapping/IMapExplicitly.cs" />
         <option value="$PROJECT_DIR$/PersonalWebsite/Mapping/IMapFrom.cs" />
         <option value="$PROJECT_DIR$/PersonalWebsite/Mapping/IMapTo.cs" />
         <option value="$PROJECT_DIR$/PersonalWebsite/Mapping/ConventionalMappingProfile.cs" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/ISeeder.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/RolesSeeder.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Models/CV/CV.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Common/GlobalConstants.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/SkillsSeeder.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/ExperiencesSeeder.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Models/ViewModels/Home/SkillViewModel.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Models/ViewModels/Home/EducationViewModel.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Models/ViewModels/Home/ExperienceViewModel.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Common/ViewModelExtensions.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Services/ICVService.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Common/QueryableMappingExtensions.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Models/ViewModels/Home/IndexViewModel.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Models/Data/Vote.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/appsettings.json" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Views/Shared/_LoginPartial.cshtml" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Controllers/HomeController.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/EducationsSeeder.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/ApplicationDbContextSeeder.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/BackupSeeder.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Models/Data/CV/CV.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Models/Data/CV/Education.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Models/Data/CV/Experience.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Models/Data/CV/Skill.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Views/Home/Index.cshtml" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/wwwroot/css/site.css" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Data/Seeding/CVSeeder.cs" />
         <option value="$PROJECT_DIR$/PersonalWebsite/Startup.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Services/CVService.cs" />
+        <option value="$PROJECT_DIR$/PersonalWebsite/Views/Shared/_Layout.cshtml" />
       </list>
     </option>
   </component>
@@ -67,6 +122,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34995976" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30008045" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -112,7 +169,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607933793175</updated>
-      <workItem from="1607933810778" duration="7088000" />
+      <workItem from="1607933810778" duration="12336000" />
+      <workItem from="1608459735430" duration="10387000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit + models creation">
       <created>1607935587437</created>
@@ -121,13 +179,20 @@
       <option name="project" value="LOCAL" />
       <updated>1607935587437</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add automapper with automatic registration of mappings based on custom interfaces">
+      <created>1607964250864</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1607964250864</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -139,20 +204,125 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initial commit + models creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit + models creation" />
+    <MESSAGE value="Add automapper with automatic registration of mappings based on custom interfaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add automapper with automatic registration of mappings based on custom interfaces" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="440" height="464" key="DebuggerActiveHint" timestamp="1608480563268">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="440" height="464" key="DebuggerActiveHint/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480563268" />
+    <state width="2517" height="400" key="GridCell.Tab.0.bottom" timestamp="1608482541419">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="400" key="GridCell.Tab.0.bottom/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608482541419" />
+    <state width="2517" height="400" key="GridCell.Tab.0.center" timestamp="1608482541419">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="400" key="GridCell.Tab.0.center/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608482541419" />
+    <state width="2517" height="400" key="GridCell.Tab.0.left" timestamp="1608482541418">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="400" key="GridCell.Tab.0.left/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608482541418" />
+    <state width="2517" height="400" key="GridCell.Tab.0.right" timestamp="1608482541419">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="400" key="GridCell.Tab.0.right/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608482541419" />
+    <state width="2517" height="427" key="GridCell.Tab.1.bottom" timestamp="1608480610395">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.1.bottom/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610395" />
+    <state width="2517" height="427" key="GridCell.Tab.1.center" timestamp="1608480610394">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.1.center/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610394" />
+    <state width="2517" height="427" key="GridCell.Tab.1.left" timestamp="1608480610394">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.1.left/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610394" />
+    <state width="2517" height="427" key="GridCell.Tab.1.right" timestamp="1608480610394">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.1.right/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610394" />
+    <state width="2517" height="427" key="GridCell.Tab.2.bottom" timestamp="1608480610395">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.2.bottom/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610395" />
+    <state width="2517" height="427" key="GridCell.Tab.2.center" timestamp="1608480610395">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.2.center/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610395" />
+    <state width="2517" height="427" key="GridCell.Tab.2.left" timestamp="1608480610395">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.2.left/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610395" />
+    <state width="2517" height="427" key="GridCell.Tab.2.right" timestamp="1608480610395">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.2.right/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610395" />
+    <state width="2517" height="427" key="GridCell.Tab.3.bottom" timestamp="1608480610395">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.3.bottom/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610395" />
+    <state width="2517" height="427" key="GridCell.Tab.3.center" timestamp="1608480610395">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.3.center/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610395" />
+    <state width="2517" height="427" key="GridCell.Tab.3.left" timestamp="1608480610395">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.3.left/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610395" />
+    <state width="2517" height="427" key="GridCell.Tab.3.right" timestamp="1608480610395">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.3.right/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610395" />
+    <state width="2517" height="427" key="GridCell.Tab.4.bottom" timestamp="1608480610396">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.4.bottom/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610396" />
+    <state width="2517" height="427" key="GridCell.Tab.4.center" timestamp="1608480610396">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.4.center/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610396" />
+    <state width="2517" height="427" key="GridCell.Tab.4.left" timestamp="1608480610395">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.4.left/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610395" />
+    <state width="2517" height="427" key="GridCell.Tab.4.right" timestamp="1608480610396">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="427" key="GridCell.Tab.4.right/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1608480610396" />
     <state x="1130" y="614" key="VCS.ChangelistChooser" timestamp="1607934093305">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1130" y="614" key="VCS.ChangelistChooser/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1607934093305" />
-    <state x="873" y="421" key="Vcs.Push.Dialog.v2" timestamp="1607935633158">
+    <state x="873" y="421" key="Vcs.Push.Dialog.v2" timestamp="1607964253825">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="873" y="421" key="Vcs.Push.Dialog.v2/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1607935633158" />
+    <state x="873" y="421" key="Vcs.Push.Dialog.v2/-1920.499.1920.1020/3840.501.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1607964253825" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/PersonalWebsite/Controllers/HomeController.cs</url>
+          <line>24</line>
+          <properties documentPath="C:\GIT\Personal Projects\NBU\PersonalWebsite-AspNetCore\PersonalWebsite\Controllers\HomeController.cs" initialLine="26">
+            <startOffsets>
+              <option value="784" />
+            </startOffsets>
+            <endOffsets>
+              <option value="807" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

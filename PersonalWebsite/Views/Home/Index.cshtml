@@ -1,8 +1,106 @@
-﻿@{
+﻿@model PersonalWebsite.Models.ViewModels.Home.IndexViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div id="personal-page">
+      <div class="container general-information">
+        <h1>@Model.Name</h1>
+        <h4 id="position">@Model.Position</h4>    
+        <p class="short-presentation">@Html.Raw(Model.ShortPresentation)</p>    
+
+        <ul class="list-inline list-unstyled text-left">
+          <li class="list-inline-item">
+              <i class="fa fa-phone" aria-hidden="true"></i> @Model.Phone
+          </li>
+          <li class="list-inline-item">
+              <i class="fa fa-envelope-o" aria-hidden="true"></i> @Model.Email
+          </li>
+          <li class="list-inline-item">
+              <i class="fa fa-map-marker" aria-hidden="true"></i> @Model.Location
+          </li>
+        </ul>
+        <img class="rounded-circle float-right" src="~/images/@Model.ProfileImageFileName" width=150 height=150>
+      </div>
+      <hr>
+      <div class="container">
+        <div class="row">
+          @if (Model.ExperienceRecords.Any())
+          {
+            <div class="col-sm section">
+            <h5>Experience</h5>
+              <ul>
+                @foreach (var experience in Model.ExperienceRecords)
+                {
+                  <li>
+                    <h6>@experience.Position - <span>@experience.Company</span></h6>
+                    <div class="activity-details">
+                      <ul class="list-inline list-unstyled text-left">
+                        <li class="list-inline-item">
+                          <i class="fa fa-calendar" aria-hidden="true"></i> @experience.FromDate - @experience.ToDate
+                        </li>
+                        <li class="list-inline-item">
+                          <i class="fa fa-map-marker" aria-hidden="true"></i> @experience.Location
+                        </li>
+                      </ul>
+                    </div>
+                    <hr>
+                    <div>
+                      @Html.Raw(experience.Description)
+                    </div>
+                  </li>
+                  <br>
+                }
+              </ul>
+          </div>
+            
+          }
+          @if (Model.EducationRecords.Any() || Model.Skills.Any())
+          {
+            <div class="col-sm section">
+              @if (Model.ExperienceRecords.Any())
+              {
+                <h5>Education</h5>
+                <ul>
+                  @foreach (var education in Model.EducationRecords)
+                  {
+                    <li>
+                      <h6>@education.Programme - <span>@education.School</span></h6>
+                      <div class="activity-details">
+                        <ul class="list-inline list-unstyled text-center">
+                          <li class="list-inline-item">
+                            <i class="fa fa-university" aria-hidden="true"></i> @education.Degree
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-calendar" aria-hidden="true"></i> @education.FromDate - @education.ToDate
+                          </li>
+                          <li class="list-inline-item">
+                            <i class="fa fa-graduation-cap" aria-hidden="true"></i> GPA - @education.Score
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  }
+                </ul>
+                <hr>
+              }
+              @if (Model.Skills.Any())
+              {
+                <h5>Skills</h5>
+                @foreach (var skillGroup in Model.SkillsByType)
+                {
+                  <h6 class="skills-group">@skillGroup.Key</h6>
+                  <ul class="list-inline list-unstyled text-center skills-list">
+                    @foreach (var skill in skillGroup.Value)
+                    {
+                      <li class="list-inline-item">@skill</li>
+                    }
+                  </ul>
+                }
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>

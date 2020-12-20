@@ -1,7 +1,7 @@
-﻿namespace PersonalWebsite.Models.CV
+﻿namespace PersonalWebsite.Models.Data.CV
 {
-    using PersonalWebsite.Models.Data.Abstract;
     using System.ComponentModel.DataAnnotations;
+    using Abstract;
 
     public class Skill : BaseDeletableModel<int>
     {
@@ -13,6 +13,6 @@
 
         public int CVId { get; set; }
 
-        public CV CV { get; set; }
+        public virtual CV CV { get; set; }
     }
 }
