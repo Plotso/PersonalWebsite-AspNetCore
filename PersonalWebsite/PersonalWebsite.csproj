@@ -20,8 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations" />
     <Folder Include="Services\" />
     <Folder Include="wwwroot\images" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\ApplicationDbContextModelSnapshot.cs" />
+    <Compile Remove="Migrations\20201225103014_Initial.Designer.cs" />
   </ItemGroup>
 
 </Project>
