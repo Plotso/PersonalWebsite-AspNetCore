@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Models.Data.CV;
+    using Models.Data.CVModels;
 
     public class EducationsSeeder : ISeeder
     {

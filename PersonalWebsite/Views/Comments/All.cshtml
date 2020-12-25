@@ -1,0 +1,106 @@
+@using Microsoft.AspNetCore.Identity
+@using PersonalWebsite.Models.Data.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@model PersonalWebsite.Models.ViewModels.Comments.AllCommentsViewModel
+
+@{
+    ViewData["Title"] = "Comments Page";
+}
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        relative_urls: false,
+        remove_script_host : false,
+        convert_urls : true,
+        plugins: [
+            "image paste table link code media fullscreen wordcount searchreplace lists"
+        ]
+    });
+</script>
+
+<h2> Below you can see all the comments that have been added. Please log in to add a comment. </h2>
+<hr>
+@if (SignInManager.IsSignedIn(User))
+{
+    <div>
+        <form asp-action="Create" id="comment-form" class="form justify-content-center">
+            <div>
+                <textarea asp-for="InputModel.Content" class="form-control"></textarea>
+                <span asp-validation-for="InputModel.Content" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-secondary ">Comment</button>
+        </form>
+    </div>
+    <hr>
+}
+<div class="comments-container">
+    @foreach (var comment in @Model.Comments)
+    {
+        <div class="container-fluid mt-100">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div class="media flex-wrap w-100 align-items-center">
+                                <img src="@comment.UserProfilePictureUrl" class="d-block ui-w-40 rounded-circle" width="75" height="75" alt="profile-picture">
+                                <div class="media-body ml-3">
+                                    @comment.UserUserName
+                                    <div class="text-muted small">
+                                        <time datetime="@comment.CreatedOn.ToString("O")"></time>
+                                    </div>
+                                </div>
+                                <div class="text-muted small ml-3">
+                                    <form id="votesForm" method="post"></form>
+                                    <div>
+                                        <a href="#" onclick="sendVote(@comment.Id, true)">
+                                            <i class="fa fa-thumbs-up"></i>
+                                        </a>
+                                    </div>
+                                    @{
+                                        var commentID = comment.Id;
+                                        var votesCountDivId = "votesCount" + commentID;
+                                     }
+                                    <div id="@votesCountDivId">@comment.VotesCount</div>
+                                    <div>
+                                        <a href="#" onclick="sendVote(@comment.Id, false)">
+                                            <i class="fa fa-thumbs-down"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <article>
+                                @Html.Raw(comment.SanitizedContent)
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        function sendVote(commentId, isUpVote) {
+            var token = $("#votesForm input[name=__RequestVerificationToken]").val();
+            console.log(token);
+            var json = { commentId: commentId, isUpVote: isUpVote };
+            var votesCountDivID = "#votesCount" + commentId.toString()
+            $.ajax({
+                url: "/api/votes",
+                type: "POST",
+                data: JSON.stringify(json),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                headers: { 'X-CSRF-TOKEN': token },
+                success: function (data) {
+                    $(votesCountDivID).html(data.votesCount);
+                }
+            });
+        }
+    </script>
+}

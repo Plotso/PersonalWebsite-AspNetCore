@@ -163,6 +163,18 @@ h2 {
   margin-right: 15%;
 }
 
+.gallery-image{
+  margin-top:20px; /*to have the space above the image*/
+  margin-bottom:20px; /*to have the space under the image*/
+}
+
+.center-custom {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  padding: 10px;
+}
+
 @media screen and (max-width: 850px){
   #personal-page img {
     display: none;

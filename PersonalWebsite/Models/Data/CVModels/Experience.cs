@@ -1,4 +1,4 @@
-﻿namespace PersonalWebsite.Models.Data.CV
+﻿namespace PersonalWebsite.Models.Data.CVModels
 {
     using System;
     using System.ComponentModel.DataAnnotations;

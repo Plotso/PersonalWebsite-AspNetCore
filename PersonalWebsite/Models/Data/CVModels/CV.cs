@@ -1,8 +1,9 @@
-﻿namespace PersonalWebsite.Models.Data.CV
+﻿namespace PersonalWebsite.Models.Data.CVModels
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using Abstract;
+    using Identity;
 
     public class CV : BaseModel<int>
     {

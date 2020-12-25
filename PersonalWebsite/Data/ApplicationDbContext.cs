@@ -9,7 +9,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Models.Data.CV;
+    using Models.Data.CVModels;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {

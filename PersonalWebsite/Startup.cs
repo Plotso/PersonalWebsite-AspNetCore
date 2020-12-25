@@ -9,6 +9,7 @@ namespace PersonalWebsite
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Data;
+    using Data.Repositories;
     using Data.Seeding;
     using Microsoft.AspNetCore.Mvc;
     using Models.Data.Identity;
@@ -48,9 +49,15 @@ namespace PersonalWebsite
             });
             services.AddRazorPages();
 
+            services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+            
             services.AddAutoMapper(GetType());
             services.AddTransient<INameService, NameService>();
             services.AddTransient<ICVService, CVService>();
+            services.AddTransient<ICommentsService, CommentsService>();
+            services.AddTransient<IVotesService, VotesService>();
+            services.AddTransient<IGalleryService, GalleryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

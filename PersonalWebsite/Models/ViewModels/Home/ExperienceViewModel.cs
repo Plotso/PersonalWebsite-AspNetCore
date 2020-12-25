@@ -2,7 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using Data.CV;
+    using Data.CVModels;
     using Mapping;
 
     public class ExperienceViewModel : IMapFrom<Experience>

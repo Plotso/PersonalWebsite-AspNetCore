@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
     using System.Linq;
     using Microsoft.EntityFrameworkCore.Internal;
-    using Models.Data.CV;
+    using Models.Data.CVModels;
 
     public class CVSeeder : ISeeder
     {

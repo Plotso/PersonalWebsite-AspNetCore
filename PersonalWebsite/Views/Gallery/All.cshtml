@@ -1,0 +1,63 @@
+@using Microsoft.AspNetCore.Identity
+@using PersonalWebsite.Models.Data.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@model PersonalWebsite.Models.ViewModels.GalleryViewModel
+
+@{
+    ViewData["Title"] = "Gallery";
+}
+
+<div id="gallery">
+    <h2> A picture can be downloaded by clicking on it <i class="fa fa-mouse-pointer" aria-hidden="true"></i></h2>
+    <div class="container gallery-container">
+        <div class="row">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <div class="center-custom">
+                    <form asp-action="Upload" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label asp-for="ImageUpload.Image">Upload new image:</label>
+                            <input asp-for="ImageUpload.Image" class="form-control"/>
+                            <span asp-validation-for="ImageUpload.Image" class="text-danger"></span>
+                        </div>
+
+                        <input type="submit" value="Upload" class="btn btn-primary"/>
+                    </form>
+
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div >
+                    @foreach (var imageName in @Model.ImagesNames)
+                    {
+                        <a class="gallery-image" href="~/images/gallery/@imageName" download>
+                            <img class="img-fluid max-width: 85%" src="~/images/gallery/@imageName">
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function(){
+          $(".fancybox").fancybox({
+                openEffect: "none",
+                closeEffect: "none"
+            });
+            
+            $(".zoom").hover(function(){
+        		
+        		$(this).addClass('transition');
+        	}, function(){
+                
+        		$(this).removeClass('transition');
+        	});
+        });
+            
+    </script>
+}

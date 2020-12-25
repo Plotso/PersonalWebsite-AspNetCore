@@ -1,6 +1,6 @@
 ﻿namespace PersonalWebsite.Models.ViewModels.Home
 {
-    using Data.CV;
+    using Data.CVModels;
     using Mapping;
 
     public class SkillViewModel : IMapFrom<Skill>

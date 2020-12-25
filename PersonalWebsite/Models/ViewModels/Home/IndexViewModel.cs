@@ -4,7 +4,7 @@
     using System.Linq;
     using AutoMapper;
     using Common;
-    using Data.CV;
+    using Data.CVModels;
     using Mapping;
 
     public class IndexViewModel : IMapFrom<CV>
