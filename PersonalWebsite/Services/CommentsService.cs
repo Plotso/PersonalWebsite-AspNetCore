@@ -25,7 +25,7 @@ namespace PersonalWebsite.Services
             var allEntities = _commentsRepository.All();
             var result = allEntities
                 .Where(c => c.CVId == cvId)
-                .OrderBy(c => c.CreatedOn)
+                .OrderByDescending(c => c.CreatedOn)
                 .Select(e => _mapper.Map<T>(e))
                 .ToArray();
             return result;
