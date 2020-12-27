@@ -3,7 +3,6 @@ namespace PersonalWebsite
     using AutoMapper;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -52,12 +51,16 @@ namespace PersonalWebsite
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             
+            //Register services
             services.AddAutoMapper(GetType());
             services.AddTransient<INameService, NameService>();
             services.AddTransient<ICVService, CVService>();
             services.AddTransient<ICommentsService, CommentsService>();
             services.AddTransient<IVotesService, VotesService>();
             services.AddTransient<IGalleryService, GalleryService>();
+            services.AddTransient<IExperienceService, ExperienceService>();
+            services.AddTransient<IEducationService, EducationService>();
+            services.AddTransient<ISkillsService, SkillsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -31,7 +31,7 @@
             <div class="col-sm section">
             <h5>Experience</h5>
               <ul>
-                @foreach (var experience in Model.ExperienceRecords)
+                @foreach (var experience in Model.ExperienceRecords.OrderByDescending(e => e.ToDate))
                 {
                   <li>
                     <h6>@experience.Position - <span>@experience.Company</span></h6>
@@ -63,7 +63,7 @@
               {
                 <h5>Education</h5>
                 <ul>
-                  @foreach (var education in Model.EducationRecords)
+                  @foreach (var education in Model.EducationRecords.OrderByDescending(e => e.ToDate))
                   {
                     <li>
                       <h6>@education.Programme - <span>@education.School</span></h6>

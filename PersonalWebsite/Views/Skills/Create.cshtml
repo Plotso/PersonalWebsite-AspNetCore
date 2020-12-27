@@ -1,0 +1,34 @@
+@model PersonalWebsite.Models.InputModels.SkillCreateInputModel
+@{
+    ViewData["Title"] = "Add Skill";
+}
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        relative_urls: false,
+        remove_script_host : false,
+        convert_urls : true,
+        plugins: [
+            "image paste table link code media fullscreen wordcount searchreplace lists"
+        ]
+    });
+</script>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="Type">Type of skill (ex: Backend, Frontend, Infrastructure)</label>
+        <input asp-for="Type" class="form-control"/>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Name">Skill name</label>
+        <input asp-for="Name" class="form-control"/>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <hr/>
+    <input type="submit" class="btn btn-primary"/>
+</form>

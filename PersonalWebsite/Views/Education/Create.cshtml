@@ -1,0 +1,58 @@
+@model PersonalWebsite.Models.InputModels.EducationCreateInputModel
+@{
+    ViewData["Title"] = "Add Education";
+}
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        relative_urls: false,
+        remove_script_host : false,
+        convert_urls : true,
+        plugins: [
+            "image paste table link code media fullscreen wordcount searchreplace lists"
+        ]
+    });
+</script>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="Programme"></label>
+        <input asp-for="Programme" class="form-control"/>
+        <span asp-validation-for="Programme" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Degree"></label>
+        <input asp-for="Degree" class="form-control"/>
+        <span asp-validation-for="Degree" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="School"></label>
+        <input asp-for="School" class="form-control"/>
+        <span asp-validation-for="School" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="FromDate">Start Date</label>
+        <input asp-for="FromDate" type="date" class="form-control"/>
+        <span asp-validation-for="FromDate" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="ToDate">End Date</label>
+        <input asp-for="ToDate" type="date" class="form-control"/>
+        <span asp-validation-for="ToDate" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Score">GPA Score</label>
+        <input asp-for="Score" type="number" step="0.01" class="form-control"/>
+        <span asp-validation-for="Score" class="text-danger"></span>
+    </div>
+
+    <hr/>
+    <input type="submit" class="btn btn-primary"/>
+</form>
