@@ -33,6 +33,15 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ViewStart.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Skills\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Skills\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Skills\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Experience\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Experience\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Experience\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Education\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Education\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Education\Edit.cshtml" />
   </ItemGroup>
 
 </Project>

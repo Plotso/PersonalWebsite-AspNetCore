@@ -96,12 +96,11 @@ namespace PersonalWebsite
             app.UseAuthentication();
             app.UseAuthorization();
 
-            //ToDo: Create admin area and simplify views by extracting admin related logic there
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     "areaRoute",
-                    "{area:exists}/a/{controller=CV}/{action=Index}/{id?}");
+                    "{area:exists}/a/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

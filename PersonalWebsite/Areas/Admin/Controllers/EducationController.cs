@@ -8,6 +8,7 @@ namespace PersonalWebsite.Controllers
     using Models.InputModels;
     using Services.Interfaces;
 
+    [Area("Admin")]
     [Authorize]
     public class EducationController : Controller
     {
