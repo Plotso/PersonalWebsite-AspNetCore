@@ -7,6 +7,8 @@
 
     public class EducationViewModel : IMapFrom<Education>
     {
+        public int Id { get; set; }
+        
         public string Programme { get; set; }
 
         public string Degree { get; set; }

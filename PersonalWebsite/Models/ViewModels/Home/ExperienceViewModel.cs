@@ -7,6 +7,8 @@
 
     public class ExperienceViewModel : IMapFrom<Experience>
     {
+        public int Id { get; set; }
+
         public string Position { get; set; }
 
         public string Company { get; set; }

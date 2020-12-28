@@ -96,6 +96,7 @@ namespace PersonalWebsite
             app.UseAuthentication();
             app.UseAuthorization();
 
+            //ToDo: Create admin area and simplify views by extracting admin related logic there
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

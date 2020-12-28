@@ -2,7 +2,6 @@ namespace PersonalWebsite.Services.Interfaces
 {
     using System.Threading.Tasks;
 
-    //ToDo: Move experience, education and skills to be using this interface
     public interface ICVModelService<TCreate, TModify>
     {
         T GetById<T>(int id);

@@ -33,6 +33,7 @@ namespace PersonalWebsite.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ExperienceCreateInputModel input)
         {
             var defaultCvId = _cvService.GetId();
@@ -63,6 +64,7 @@ namespace PersonalWebsite.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(ExperienceModifyInputModel modifiedModel)
         {
             if (!ModelState.IsValid)

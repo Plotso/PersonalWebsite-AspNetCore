@@ -114,6 +114,14 @@ h2 {
   text-align: center;
 }
 
+.page-link-green {
+  color: rgb(64, 206, 64);
+}
+
+.page-link-green:hover {
+  color: rgb(64, 206, 64);
+}
+
 .page-heading {
   text-align: center;
   color: rgb(64, 206, 64);

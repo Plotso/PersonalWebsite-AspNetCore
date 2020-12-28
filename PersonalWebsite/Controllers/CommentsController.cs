@@ -37,6 +37,7 @@
         
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(AllCommentsViewModel model)
         {
             if (!ModelState.IsValid)
