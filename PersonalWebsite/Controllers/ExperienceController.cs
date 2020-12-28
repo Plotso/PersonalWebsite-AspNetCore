@@ -11,6 +11,7 @@ namespace PersonalWebsite.Controllers
     using Services;
     using Services.Interfaces;
 
+    [Authorize]
     public class ExperienceController : Controller
     {
         private readonly ICVService _cvService;
@@ -24,7 +25,6 @@ namespace PersonalWebsite.Controllers
             _logger = logger;
         }
         
-        [Authorize]
         public IActionResult Create()
         {
             var viewModel = new ExperienceCreateInputModel();
@@ -32,7 +32,6 @@ namespace PersonalWebsite.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ExperienceCreateInputModel input)
         {
@@ -55,7 +54,6 @@ namespace PersonalWebsite.Controllers
             return RedirectToAction("Index", "Home");
         }
         
-        [Authorize]
         public IActionResult Edit(int id)
         {
             var viewModel = _experienceService.GetById<ExperienceModifyInputModel>(id);
@@ -63,7 +61,6 @@ namespace PersonalWebsite.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(ExperienceModifyInputModel modifiedModel)
         {
@@ -85,7 +82,6 @@ namespace PersonalWebsite.Controllers
             return RedirectToAction("Index", "Home");
         }
         
-        [Authorize]
         public IActionResult Delete(int id)
         {
             var viewModel = _experienceService.GetById<ExperienceModifyInputModel>(id);
@@ -93,7 +89,6 @@ namespace PersonalWebsite.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> Delete(ExperienceModifyInputModel modifiedModel)
         {
             if (!ModelState.IsValid)

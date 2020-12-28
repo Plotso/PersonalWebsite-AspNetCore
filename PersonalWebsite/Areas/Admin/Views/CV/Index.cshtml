@@ -1,4 +1,4 @@
-﻿@model PersonalWebsite.Models.ViewModels.Home.IndexViewModel
+@model PersonalWebsite.Models.ViewModels.Home.IndexViewModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -29,12 +29,22 @@
             @if (Model.ExperienceRecords.Any())
             {
                 <div class="col-sm section">
-                    <h5>Experience</h5>
+                    <h5>
+                        Experience
+                        <a class="page-link-green" asp-controller="Experience" asp-action="Create" title="Add new experience">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        </a>
+                    </h5>
                     <ul>
                         @foreach (var experience in Model.ExperienceRecords.OrderByDescending(e => e.ToDate))
                         {
                             <li>
-                                <h6>@experience.Position - <span>@experience.Company</span></h6>
+                                <h6>
+                                    <a class="page-link-green" asp-controller="Experience" asp-action="Edit" asp-route-id="@experience.Id" title="Edit experience">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </a>
+                                    @experience.Position - <span>@experience.Company</span>
+                                </h6>
                                 <div class="activity-details">
                                     <ul class="list-inline list-unstyled text-left">
                                         <li class="list-inline-item">
@@ -60,12 +70,22 @@
                 <div class="col-sm section">
                     @if (Model.ExperienceRecords.Any())
                     {
-                        <h5>Education</h5>
+                        <h5>
+                            Education
+                            <a class="page-link-green" asp-controller="Education" asp-action="Create" title="Add new education">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            </a>
+                        </h5>
                         <ul>
                             @foreach (var education in Model.EducationRecords.OrderByDescending(e => e.ToDate))
                             {
                                 <li>
-                                    <h6>@education.Programme - <span>@education.School</span></h6>
+                                    <h6>
+                                        <a class="page-link-green" asp-controller="Education" asp-action="Edit" asp-route-id="@education.Id" title="Edit education">
+                                            <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                        </a>
+                                        @education.Programme - <span>@education.School</span>
+                                    </h6>
                                     <div class="activity-details">
                                         <ul class="list-inline list-unstyled text-center">
                                             <li class="list-inline-item">
@@ -86,14 +106,23 @@
                     }
                     @if (Model.Skills.Any())
                     {
-                        <h5>Skills</h5>
+                        <h5>
+                            Skills
+                            <a class="page-link-green" asp-controller="Skills" asp-action="Create" title="Add new skill">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            </a>
+                        </h5>
                         @foreach (var skillGroup in Model.SkillsByType)
                         {
                             <h6 class="skills-group">@skillGroup.Key</h6>
                             <ul class="list-inline list-unstyled text-center skills-list">
                                 @foreach (var skill in skillGroup.Value)
                                 {
+                                    var actualSkill = Model.Skills.Where(s => s.Type == skillGroup.Key && s.Name == skill).FirstOrDefault();
                                     <li class="list-inline-item">@skill</li>
+                                    <a class="page-link-green" asp-controller="Skills" asp-action="Edit" asp-route-id="@actualSkill.Id" title="Edit Skill">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
                                 }
                             </ul>
                         }

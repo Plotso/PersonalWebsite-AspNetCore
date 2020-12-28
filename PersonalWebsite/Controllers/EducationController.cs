@@ -8,6 +8,7 @@ namespace PersonalWebsite.Controllers
     using Models.InputModels;
     using Services.Interfaces;
 
+    [Authorize]
     public class EducationController : Controller
     {
         private readonly ICVService _cvService;
@@ -21,7 +22,6 @@ namespace PersonalWebsite.Controllers
             _logger = logger;
         }
         
-        [Authorize]
         public IActionResult Create()
         {
             var viewModel = new EducationCreateInputModel();
@@ -29,7 +29,6 @@ namespace PersonalWebsite.Controllers
         }
         
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(EducationCreateInputModel input)
         {
@@ -52,7 +51,6 @@ namespace PersonalWebsite.Controllers
             return RedirectToAction("Index", "Home");
         }
         
-        [Authorize]
         public IActionResult Edit(int id)
         {
             var viewModel = _educationService.GetById<EducationModifyInputModel>(id);
@@ -60,7 +58,6 @@ namespace PersonalWebsite.Controllers
         }
         
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EducationModifyInputModel modifiedModel)
         {
@@ -82,7 +79,6 @@ namespace PersonalWebsite.Controllers
             return RedirectToAction("Index", "Home");
         }
         
-        [Authorize]
         public IActionResult Delete(int id)
         {
             var viewModel = _educationService.GetById<EducationModifyInputModel>(id);
@@ -90,7 +86,6 @@ namespace PersonalWebsite.Controllers
         }
         
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> Delete(EducationModifyInputModel modifiedModel)
         {
             if (!ModelState.IsValid)

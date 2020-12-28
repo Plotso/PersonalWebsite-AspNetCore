@@ -9,6 +9,7 @@ namespace PersonalWebsite.Controllers
     using Services;
     using Services.Interfaces;
 
+    [Authorize]
     public class SkillsController : Controller
     {
         private readonly ICVService _cvService;
@@ -22,7 +23,6 @@ namespace PersonalWebsite.Controllers
             _logger = logger;
         }
         
-        [Authorize]
         public IActionResult Create()
         {
             var viewModel = new SkillCreateInputModel();
@@ -30,7 +30,6 @@ namespace PersonalWebsite.Controllers
         }
         
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SkillCreateInputModel input)
         {
@@ -53,7 +52,6 @@ namespace PersonalWebsite.Controllers
             return RedirectToAction("Index", "Home");
         }
         
-        [Authorize]
         public IActionResult Edit(int id)
         {
             var viewModel = _skillsService.GetById<SkillModifyInputModel>(id);
@@ -61,7 +59,6 @@ namespace PersonalWebsite.Controllers
         }
         
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(SkillModifyInputModel modifiedModel)
         {
@@ -83,7 +80,6 @@ namespace PersonalWebsite.Controllers
             return RedirectToAction("Index", "Home");
         }
         
-        [Authorize]
         public IActionResult Delete(int id)
         {
             var viewModel = _skillsService.GetById<SkillModifyInputModel>(id);
@@ -91,7 +87,6 @@ namespace PersonalWebsite.Controllers
         }
         
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> Delete(SkillModifyInputModel modifiedModel)
         {
             if (!ModelState.IsValid)
