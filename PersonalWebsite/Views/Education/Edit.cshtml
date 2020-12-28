@@ -1,6 +1,6 @@
-@model PersonalWebsite.Models.InputModels.EducationCreateInputModel
+@model PersonalWebsite.Models.InputModels.EducationModifyInputModel
 @{
-    ViewData["Title"] = "Add Education";
+    ViewData["Title"] = "Edit Education";
 }
 
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -16,8 +16,8 @@
     });
 </script>
 
-<h3 class="page-heading">Add new education</h3>
-<form asp-action="Create" method="post">
+<h3 class="page-heading">Edit education</h3>
+<form asp-action="Edit" method="post">
     <div>
         <label asp-for="Programme"></label>
         <input asp-for="Programme" class="form-control"/>
@@ -56,6 +56,6 @@
 
     <hr/>
     <div class="center-group">
-        <input type="submit" class="btn btn-primary create-record-btn" value="Add Education"/>
+        <input type="submit" class="btn btn-primary create-record-btn" value="Edit Education"/>
     </div>
 </form>

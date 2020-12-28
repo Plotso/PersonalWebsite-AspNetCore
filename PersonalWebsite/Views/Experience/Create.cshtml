@@ -16,6 +16,7 @@
     });
 </script>
 
+<h3 class="page-heading">Add new experience</h3>
 <form asp-action="Create" method="post">
     <div>
         <label asp-for="Position"></label>
@@ -53,5 +54,7 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <hr/>
-    <input type="submit" class="btn btn-primary"/>
+    <div class="center-group">
+        <input type="submit" class="btn btn-primary create-record-btn" value="Add Experience"/>
+    </div>
 </form>

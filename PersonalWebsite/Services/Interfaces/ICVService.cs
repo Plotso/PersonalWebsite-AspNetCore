@@ -1,7 +1,5 @@
-﻿namespace PersonalWebsite.Services
+﻿namespace PersonalWebsite.Services.Interfaces
 {
-    using System.Threading.Tasks;
-
     public interface ICVService
     {
         T GetFirstOrDefault<T>();

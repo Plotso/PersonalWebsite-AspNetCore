@@ -1,0 +1,48 @@
+@model PersonalWebsite.Models.InputModels.EducationModifyInputModel
+@{
+    ViewData["Title"] = "Delete Education";
+}
+
+<h3 class="delete-page-heading">Delete education</h3>
+<form asp-action="Delete" method="post">
+    <div>
+        <label asp-for="Programme"></label>
+        <input asp-for="Programme" class="form-control" readonly/>
+        <span asp-validation-for="Programme" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Degree"></label>
+        <input asp-for="Degree" class="form-control" readonly/>
+        <span asp-validation-for="Degree" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="School"></label>
+        <input asp-for="School" class="form-control" readonly/>
+        <span asp-validation-for="School" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="FromDate">Start Date</label>
+        <input asp-for="FromDate" type="date" class="form-control" readonly/>
+        <span asp-validation-for="FromDate" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="ToDate">End Date</label>
+        <input asp-for="ToDate" type="date" class="form-control" readonly/>
+        <span asp-validation-for="ToDate" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Score">GPA Score</label>
+        <input asp-for="Score" type="number" step="0.01" class="form-control" readonly/>
+        <span asp-validation-for="Score" class="text-danger"></span>
+    </div>
+
+    <hr/>
+    <div class="center-group">
+        <input type="submit" class="btn btn-primary delete-record-btn" value="Delete Education"/>
+    </div>
+</form>

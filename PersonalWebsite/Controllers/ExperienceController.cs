@@ -9,6 +9,7 @@ namespace PersonalWebsite.Controllers
     using Models.InputModels;
     using Models.ViewModels;
     using Services;
+    using Services.Interfaces;
 
     public class ExperienceController : Controller
     {
@@ -47,6 +48,64 @@ namespace PersonalWebsite.Controllers
             catch (Exception e)
             {
                 _logger.LogError(e, "An exception occured during new experience record creation.");
+                return RedirectToAction("Error", "Home");
+            }
+            
+            return RedirectToAction("Index", "Home");
+        }
+        
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
+            var viewModel = _experienceService.GetById<ExperienceModifyInputModel>(id);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Edit(ExperienceModifyInputModel modifiedModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(modifiedModel);
+            }
+
+            try
+            {
+                await _experienceService.Edit(modifiedModel);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"An exception occured during experience record UPDATE operation for educationId: {modifiedModel.Id}.");
+                return RedirectToAction("Error", "Home");
+            }
+            
+            return RedirectToAction("Index", "Home");
+        }
+        
+        [Authorize]
+        public IActionResult Delete(int id)
+        {
+            var viewModel = _experienceService.GetById<ExperienceModifyInputModel>(id);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Delete(ExperienceModifyInputModel modifiedModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(modifiedModel);
+            }
+
+            try
+            {
+                await _experienceService.Delete(modifiedModel.Id);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"An exception occured during experience record DELETE operation for educationId: {modifiedModel.Id}.");
                 return RedirectToAction("Error", "Home");
             }
             

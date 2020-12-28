@@ -1,10 +1,10 @@
-@model PersonalWebsite.Models.InputModels.SkillCreateInputModel
+@model PersonalWebsite.Models.InputModels.SkillModifyInputModel
 @{
-    ViewData["Title"] = "Add Skill";
+    ViewData["Title"] = "Edit Skill";
 }
 
-<h3 class="page-heading">Add new skill</h3>
-<form asp-action="Create" method="post">
+<h3 class="page-heading">Edit skill</h3>
+<form asp-action="Edit" method="post">
     <div>
         <label asp-for="Type">Type of skill (ex: Backend, Frontend, Infrastructure)</label>
         <input asp-for="Type" class="form-control"/>
@@ -19,6 +19,6 @@
 
     <hr/>
     <div class="center-group">
-        <input type="submit" class="btn btn-primary create-record-btn" value="Add Skill"/>
+        <input type="submit" class="btn btn-primary create-record-btn" value="Edit Skill"/>
     </div>
 </form>

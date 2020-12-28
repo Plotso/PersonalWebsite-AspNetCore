@@ -6,13 +6,20 @@
     using PersonalWebsite.Models.Data;
     using PersonalWebsite.Models.Data.Identity;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore.Metadata;
     using Models.Data.CVModels;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
+        private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
+            typeof(ApplicationDbContext).GetMethod(
+                nameof(SetIsDeletedQueryFilter),
+                BindingFlags.NonPublic | BindingFlags.Static);
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -60,6 +67,8 @@
             DeletableEntityIndexConfiguration.Configure(builder);
 
             var entityTypes = builder.Model.GetEntityTypes().ToList();
+            
+            ApplyGlobalQueryFilterForNotDeletedEntities(builder, entityTypes);
 
             // Disable cascade delete
             var foreignKeys = entityTypes
@@ -67,6 +76,17 @@
             foreach (var foreignKey in foreignKeys)
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+        }
+
+        private static void ApplyGlobalQueryFilterForNotDeletedEntities(ModelBuilder builder, List<IMutableEntityType> entityTypes)
+        {
+            var deletableEntityTypes = entityTypes
+                .Where(et => et.ClrType != null && typeof(IDeletableEntity).IsAssignableFrom(et.ClrType));
+            foreach (var deletableEntityType in deletableEntityTypes)
+            {
+                var method = SetIsDeletedQueryFilterMethod.MakeGenericMethod(deletableEntityType.ClrType);
+                method.Invoke(null, new object[] {builder});
             }
         }
 
@@ -93,6 +113,12 @@
                     entity.ModifiedOn = DateTime.UtcNow;
                 }
             }
+        }
+        
+        private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)
+            where T : class, IDeletableEntity
+        {
+            builder.Entity<T>().HasQueryFilter(e => !e.IsDeleted);
         }
     }
 }

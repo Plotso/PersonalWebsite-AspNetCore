@@ -7,6 +7,7 @@ namespace PersonalWebsite.Controllers
     using Microsoft.Extensions.Logging;
     using Models.InputModels;
     using Services;
+    using Services.Interfaces;
 
     public class SkillsController : Controller
     {
@@ -45,6 +46,64 @@ namespace PersonalWebsite.Controllers
             catch (Exception e)
             {
                 _logger.LogError(e, "An exception occured during new skill record creation.");
+                return RedirectToAction("Error", "Home");
+            }
+            
+            return RedirectToAction("Index", "Home");
+        }
+        
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
+            var viewModel = _skillsService.GetById<SkillModifyInputModel>(id);
+            return View(viewModel);
+        }
+        
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Edit(SkillModifyInputModel modifiedModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(modifiedModel);
+            }
+
+            try
+            {
+                await _skillsService.Edit(modifiedModel);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"An exception occured during skill record UPDATE operation for skillId: {modifiedModel.Id}.");
+                return RedirectToAction("Error", "Home");
+            }
+            
+            return RedirectToAction("Index", "Home");
+        }
+        
+        [Authorize]
+        public IActionResult Delete(int id)
+        {
+            var viewModel = _skillsService.GetById<SkillModifyInputModel>(id);
+            return View(viewModel);
+        }
+        
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Delete(SkillModifyInputModel modifiedModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(modifiedModel);
+            }
+
+            try
+            {
+                await _skillsService.Delete(modifiedModel.Id);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"An exception occured during skill record DELETE operation for skillId: {modifiedModel.Id}.");
                 return RedirectToAction("Error", "Home");
             }
             

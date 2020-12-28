@@ -5,6 +5,7 @@
     using AutoMapper;
     using Data;
     using Data.Repositories;
+    using Interfaces;
     using Microsoft.EntityFrameworkCore;
     using Models.Data.CVModels;
 

@@ -8,6 +8,7 @@
     using Models.InputModels;
     using Models.ViewModels.Comments;
     using Services;
+    using Services.Interfaces;
 
     public class CommentsController : Controller
     {

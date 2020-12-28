@@ -3,6 +3,7 @@ namespace PersonalWebsite.Services
     using System.Linq;
     using System.Threading.Tasks;
     using Data.Repositories;
+    using Interfaces;
     using Models.Data;
 
     public class VotesService: IVotesService

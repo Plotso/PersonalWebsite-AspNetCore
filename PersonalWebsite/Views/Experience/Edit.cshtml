@@ -1,6 +1,6 @@
-@model PersonalWebsite.Models.InputModels.EducationCreateInputModel
+@model PersonalWebsite.Models.InputModels.ExperienceModifyInputModel
 @{
-    ViewData["Title"] = "Add Education";
+    ViewData["Title"] = "Edit Experience";
 }
 
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -16,24 +16,24 @@
     });
 </script>
 
-<h3 class="page-heading">Add new education</h3>
-<form asp-action="Create" method="post">
+<h3 class="page-heading">Edit experience</h3>
+<form asp-action="Edit" method="post">
     <div>
-        <label asp-for="Programme"></label>
-        <input asp-for="Programme" class="form-control"/>
-        <span asp-validation-for="Programme" class="text-danger"></span>
+        <label asp-for="Position"></label>
+        <input asp-for="Position" class="form-control"/>
+        <span asp-validation-for="Position" class="text-danger"></span>
     </div>
     
     <div>
-        <label asp-for="Degree"></label>
-        <input asp-for="Degree" class="form-control"/>
-        <span asp-validation-for="Degree" class="text-danger"></span>
+        <label asp-for="Company"></label>
+        <input asp-for="Company" class="form-control"/>
+        <span asp-validation-for="Company" class="text-danger"></span>
     </div>
     
     <div>
-        <label asp-for="School"></label>
-        <input asp-for="School" class="form-control"/>
-        <span asp-validation-for="School" class="text-danger"></span>
+        <label asp-for="Location"></label>
+        <input asp-for="Location" class="form-control"/>
+        <span asp-validation-for="Location" class="text-danger"></span>
     </div>
     
     <div>
@@ -47,15 +47,14 @@
         <input asp-for="ToDate" type="date" class="form-control"/>
         <span asp-validation-for="ToDate" class="text-danger"></span>
     </div>
-    
-    <div>
-        <label asp-for="Score">GPA Score</label>
-        <input asp-for="Score" type="number" step="0.01" class="form-control"/>
-        <span asp-validation-for="Score" class="text-danger"></span>
-    </div>
 
+    <div>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
     <hr/>
     <div class="center-group">
-        <input type="submit" class="btn btn-primary create-record-btn" value="Add Education"/>
+        <input type="submit" class="btn btn-primary create-record-btn" value="Edit Experience"/>
     </div>
 </form>

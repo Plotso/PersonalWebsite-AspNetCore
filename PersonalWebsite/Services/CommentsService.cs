@@ -5,6 +5,7 @@ namespace PersonalWebsite.Services
     using System.Threading.Tasks;
     using AutoMapper;
     using Data.Repositories;
+    using Interfaces;
     using Models.Data;
     using Models.Data.CVModels;
     using PersonalWebsite.Data;

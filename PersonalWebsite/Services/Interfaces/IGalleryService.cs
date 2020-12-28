@@ -1,4 +1,4 @@
-namespace PersonalWebsite.Services
+namespace PersonalWebsite.Services.Interfaces
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

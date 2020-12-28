@@ -114,6 +114,28 @@ h2 {
   text-align: center;
 }
 
+.page-heading {
+  text-align: center;
+  color: rgb(64, 206, 64);
+}
+
+.delete-page-heading {
+  text-align: center;
+  color: rgb(157, 8, 8);
+}
+
+.create-record-btn {
+  background-color: rgb(64, 206, 64) !important;
+}
+
+.delete-record-btn {
+  background-color: rgb(157, 8, 8) !important;
+}
+
+.center-group {
+  text-align: center;  
+}
+
 #position {
   color: rgb(64, 206, 64);
 }

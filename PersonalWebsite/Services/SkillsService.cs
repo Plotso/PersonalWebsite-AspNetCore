@@ -1,8 +1,10 @@
 namespace PersonalWebsite.Services
 {
+    using System.Linq;
     using System.Threading.Tasks;
     using AutoMapper;
     using Data.Repositories;
+    using Interfaces;
     using Models.Data.CVModels;
     using Models.InputModels;
 
@@ -15,6 +17,35 @@ namespace PersonalWebsite.Services
         {
             _skillsRepository = skillsRepository;
             _mapper = mapper;
+        }
+
+        public T GetById<T>(int skillId)
+        {
+            var skill = _skillsRepository.All().FirstOrDefault(e => e.Id == skillId);
+            return _mapper.Map<T>(skill);
+        }
+
+        public async Task Delete(int skillId)
+        {
+            var skill = _skillsRepository.All().FirstOrDefault(e => e.Id == skillId);
+            if (skill != null)
+            {
+                _skillsRepository.Delete(skill);
+                await _skillsRepository.SaveChangesAsync();
+            }
+        }
+
+        public async Task Edit(SkillModifyInputModel modifiedModel)
+        {
+            var skill = _skillsRepository.All().FirstOrDefault(e => e.Id == modifiedModel.Id);
+            if (skill != null)
+            {
+                skill.Type = modifiedModel.Type;
+                skill.Name = modifiedModel.Name;
+                
+                _skillsRepository.Update(skill);
+                await _skillsRepository.SaveChangesAsync();
+            }
         }
 
         public async Task CreateAsync(SkillCreateInputModel inputModel, int cvId)

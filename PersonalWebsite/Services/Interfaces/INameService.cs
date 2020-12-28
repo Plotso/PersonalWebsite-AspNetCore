@@ -1,4 +1,4 @@
-﻿namespace PersonalWebsite.Services
+﻿namespace PersonalWebsite.Services.Interfaces
 {
     public interface INameService
     {

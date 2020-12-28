@@ -6,7 +6,7 @@ namespace PersonalWebsite.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using Models.InputModels;
-    using Services;
+    using Services.Interfaces;
 
     public class EducationController : Controller
     {
@@ -45,6 +45,64 @@ namespace PersonalWebsite.Controllers
             catch (Exception e)
             {
                 _logger.LogError(e, "An exception occured during new education record creation.");
+                return RedirectToAction("Error", "Home");
+            }
+            
+            return RedirectToAction("Index", "Home");
+        }
+        
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
+            var viewModel = _educationService.GetById<EducationModifyInputModel>(id);
+            return View(viewModel);
+        }
+        
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Edit(EducationModifyInputModel modifiedModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(modifiedModel);
+            }
+
+            try
+            {
+                await _educationService.Edit(modifiedModel);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"An exception occured during education record UPDATE operation for educationId: {modifiedModel.Id}.");
+                return RedirectToAction("Error", "Home");
+            }
+            
+            return RedirectToAction("Index", "Home");
+        }
+        
+        [Authorize]
+        public IActionResult Delete(int id)
+        {
+            var viewModel = _educationService.GetById<EducationModifyInputModel>(id);
+            return View(viewModel);
+        }
+        
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Delete(EducationModifyInputModel modifiedModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(modifiedModel);
+            }
+
+            try
+            {
+                await _educationService.Delete(modifiedModel.Id);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"An exception occured during education record DELETE operation for educationId: {modifiedModel.Id}.");
                 return RedirectToAction("Error", "Home");
             }
             
