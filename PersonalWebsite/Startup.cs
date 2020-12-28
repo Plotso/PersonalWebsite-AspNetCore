@@ -12,6 +12,7 @@ namespace PersonalWebsite
     using Data.Seeding;
     using Microsoft.AspNetCore.Mvc;
     using Models.Data.Identity;
+    using Models.InputModels;
     using Services;
     using Services.Interfaces;
 
@@ -59,9 +60,9 @@ namespace PersonalWebsite
             services.AddTransient<ICommentsService, CommentsService>();
             services.AddTransient<IVotesService, VotesService>();
             services.AddTransient<IGalleryService, GalleryService>();
-            services.AddTransient<IExperienceService, ExperienceService>();
-            services.AddTransient<IEducationService, EducationService>();
-            services.AddTransient<ISkillsService, SkillsService>();
+            services.AddTransient<ICVModelService<ExperienceCreateInputModel, ExperienceModifyInputModel>, ExperienceService>();
+            services.AddTransient<ICVModelService<EducationCreateInputModel, EducationModifyInputModel>, EducationService>();
+            services.AddTransient<ICVModelService<SkillCreateInputModel, SkillModifyInputModel>, SkillsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

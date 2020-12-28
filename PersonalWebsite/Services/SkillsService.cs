@@ -8,7 +8,7 @@ namespace PersonalWebsite.Services
     using Models.Data.CVModels;
     using Models.InputModels;
 
-    public class SkillsService : ISkillsService
+    public class SkillsService : ICVModelService<SkillCreateInputModel, SkillModifyInputModel>
     {
         private readonly IDeletableEntityRepository<Skill> _skillsRepository;
         private readonly IMapper _mapper;

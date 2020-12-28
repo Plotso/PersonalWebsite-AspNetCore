@@ -12,10 +12,10 @@ namespace PersonalWebsite.Controllers
     public class SkillsController : Controller
     {
         private readonly ICVService _cvService;
-        private readonly ISkillsService _skillsService;
+        private readonly ICVModelService<SkillCreateInputModel, SkillModifyInputModel> _skillsService;
         private readonly ILogger<SkillsController> _logger;
 
-        public SkillsController(ICVService cvService, ISkillsService skillsService, ILogger<SkillsController> logger)
+        public SkillsController(ICVService cvService, ICVModelService<SkillCreateInputModel, SkillModifyInputModel> skillsService, ILogger<SkillsController> logger)
         {
             _cvService = cvService;
             _skillsService = skillsService;

@@ -8,7 +8,7 @@ namespace PersonalWebsite.Services
     using Models.Data.CVModels;
     using Models.InputModels;
 
-    public class ExperienceService : IExperienceService
+    public class ExperienceService : ICVModelService<ExperienceCreateInputModel, ExperienceModifyInputModel>
     {
         private readonly IDeletableEntityRepository<Experience> _experienceRepository;
         private readonly IMapper _mapper;
