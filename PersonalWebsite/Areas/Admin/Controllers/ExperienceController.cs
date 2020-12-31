@@ -16,10 +16,10 @@ namespace PersonalWebsite.Controllers
     public class ExperienceController : Controller
     {
         private readonly ICVService _cvService;
-        private readonly ICVModelService<ExperienceCreateInputModel, ExperienceModifyInputModel> _experienceService;
+        private readonly ICVSectionService<ExperienceCreateInputModel, ExperienceModifyInputModel> _experienceService;
         private readonly ILogger<ExperienceController> _logger;
 
-        public ExperienceController(ICVService cvService, ICVModelService<ExperienceCreateInputModel, ExperienceModifyInputModel> experienceService, ILogger<ExperienceController> logger)
+        public ExperienceController(ICVService cvService, ICVSectionService<ExperienceCreateInputModel, ExperienceModifyInputModel> experienceService, ILogger<ExperienceController> logger)
         {
             _cvService = cvService;
             _experienceService = experienceService;

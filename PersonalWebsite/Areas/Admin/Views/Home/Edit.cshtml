@@ -1,0 +1,67 @@
+@model PersonalWebsite.Models.InputModels.CVModifyInputModel
+@{
+    ViewData["Title"] = "Edit CV";
+}
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        relative_urls: false,
+        remove_script_host : false,
+        convert_urls : true,
+        plugins: [
+            "image paste table link code media fullscreen wordcount searchreplace lists"
+        ]
+    });
+</script>
+
+<h3 class="page-heading">Edit CV information</h3>
+<form asp-action="Edit" method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control"/>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Position"></label>
+        <input asp-for="Position" class="form-control"/>
+        <span asp-validation-for="Position" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Phone"></label>
+        <input asp-for="Phone" class="form-control"/>
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" type="email"/>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Location"></label>
+        <input asp-for="Location" class="form-control"/>
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="ShortPresentation"></label>
+        <textarea asp-for="ShortPresentation" class="form-control"></textarea>
+        <span asp-validation-for="ShortPresentation" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="NewCVPicture">Upload new CV picture:</label>
+        <input asp-for="NewCVPicture" class="form-control" title="Valid formats are jpeg, jpg, png & gif"/>
+        <span asp-validation-for="NewCVPicture" class="text-danger"></span>
+    </div>
+    
+    <hr/>
+    <div class="center-group">
+        <input type="submit" class="btn btn-primary create-record-btn" value="Edit CV"/>
+    </div>
+</form>

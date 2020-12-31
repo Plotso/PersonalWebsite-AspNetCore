@@ -3,20 +3,20 @@ namespace PersonalWebsite.Services
     using System;
     using System.IO;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using Interfaces;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.EntityFrameworkCore.Internal;
     using Models.InputModels;
 
     public class GalleryService : IGalleryService
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IFileManagementService _fileManagementService;
 
-        public GalleryService(IWebHostEnvironment webHostEnvironment)
+        public GalleryService(IWebHostEnvironment webHostEnvironment, IFileManagementService fileManagementService)
         {
             _webHostEnvironment = webHostEnvironment;
+            _fileManagementService = fileManagementService;
         }
         
         public IEnumerable<string> GetAllImages()
@@ -38,18 +38,9 @@ namespace PersonalWebsite.Services
         public async Task UploadImage(GalleryInputModel imageInput)
         {
             var fileName = imageInput.Image.FileName;
-            var uniqueFileName = Guid.NewGuid() + fileName; 
-            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, @"images\gallery");
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+            var uniqueFileName = Guid.NewGuid() + fileName;
 
-            var expectedFileExt = new[] { ".jpeg", ".jpg", ".png", ".gif" };
-            if (expectedFileExt.Any(x => fileName.EndsWith(x)))
-            {
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await imageInput.Image.CopyToAsync(fileStream);
-                }
-            }
+            await _fileManagementService.SaveImageAsync("gallery", uniqueFileName, imageInput.Image);
         }
     }
 }

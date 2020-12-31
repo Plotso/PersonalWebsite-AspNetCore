@@ -1,12 +1,14 @@
 namespace PersonalWebsite.Areas.Admin.Controllers
 {
+    using System;
     using System.Diagnostics;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
+    using Models.InputModels;
     using Models.ViewModels;
     using Models.ViewModels.Home;
-    using PersonalWebsite.Controllers;
     using Services.Interfaces;
 
     [Area("Admin")]
@@ -27,6 +29,35 @@ namespace PersonalWebsite.Areas.Admin.Controllers
             var viewModel = _cvService.GetFirstOrDefault<IndexViewModel>();
             return View(viewModel);
         }
+        
+        public IActionResult Edit(int id)
+        {
+            var viewModel = _cvService.GetFirstOrDefault<CVModifyInputModel>();
+            return View(viewModel);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(CVModifyInputModel modifiedModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(modifiedModel);
+            }
+
+            try
+            {
+                await _cvService.Edit(modifiedModel);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"An exception occured during education record UPDATE operation for main CV: {modifiedModel.Id}.");
+                return RedirectToAction("Error", "Home");
+            }
+            
+            return RedirectToAction("Index", "Home");
+        }
+        
         
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

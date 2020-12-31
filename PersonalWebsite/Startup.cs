@@ -56,13 +56,14 @@ namespace PersonalWebsite
             //Register services
             services.AddAutoMapper(GetType());
             services.AddTransient<INameService, NameService>();
+            services.AddTransient<IFileManagementService, FileManagementService>();
             services.AddTransient<ICVService, CVService>();
             services.AddTransient<ICommentsService, CommentsService>();
             services.AddTransient<IVotesService, VotesService>();
             services.AddTransient<IGalleryService, GalleryService>();
-            services.AddTransient<ICVModelService<ExperienceCreateInputModel, ExperienceModifyInputModel>, ExperienceService>();
-            services.AddTransient<ICVModelService<EducationCreateInputModel, EducationModifyInputModel>, EducationService>();
-            services.AddTransient<ICVModelService<SkillCreateInputModel, SkillModifyInputModel>, SkillsService>();
+            services.AddTransient<ICVSectionService<ExperienceCreateInputModel, ExperienceModifyInputModel>, ExperienceService>();
+            services.AddTransient<ICVSectionService<EducationCreateInputModel, EducationModifyInputModel>, EducationService>();
+            services.AddTransient<ICVSectionService<SkillCreateInputModel, SkillModifyInputModel>, SkillsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -13,10 +13,10 @@ namespace PersonalWebsite.Controllers
     public class EducationController : Controller
     {
         private readonly ICVService _cvService;
-        private readonly ICVModelService<EducationCreateInputModel, EducationModifyInputModel> _educationService;
+        private readonly ICVSectionService<EducationCreateInputModel, EducationModifyInputModel> _educationService;
         private readonly ILogger<EducationController> _logger;
 
-        public EducationController(ICVService cvService, ICVModelService<EducationCreateInputModel, EducationModifyInputModel> educationService, ILogger<EducationController> logger)
+        public EducationController(ICVService cvService, ICVSectionService<EducationCreateInputModel, EducationModifyInputModel> educationService, ILogger<EducationController> logger)
         {
             _cvService = cvService;
             _educationService = educationService;

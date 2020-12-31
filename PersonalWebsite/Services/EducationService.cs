@@ -8,7 +8,7 @@ namespace PersonalWebsite.Services
     using Models.Data.CVModels;
     using Models.InputModels;
 
-    public class EducationService : ICVModelService<EducationCreateInputModel, EducationModifyInputModel>
+    public class EducationService : ICVSectionService<EducationCreateInputModel, EducationModifyInputModel>
     {
         private readonly IDeletableEntityRepository<Education> _educationEntityRepository;
         private readonly IMapper _mapper;
