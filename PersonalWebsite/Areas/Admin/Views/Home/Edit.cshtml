@@ -17,7 +17,7 @@
 </script>
 
 <h3 class="page-heading">Edit CV information</h3>
-<form asp-action="Edit" method="post">
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
     <div>
         <label asp-for="Name"></label>
         <input asp-for="Name" class="form-control"/>

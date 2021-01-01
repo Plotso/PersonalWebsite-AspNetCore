@@ -215,3 +215,7 @@ h2 {
     height: auto;
   }
 }
+
+.label-block {
+  display: block;
+}
