@@ -15,9 +15,17 @@
             {
                 <div class="center-custom">
                     <form asp-action="Upload" enctype="multipart/form-data">
-                        <div class="form-group">
+                        <div>
                             <label asp-for="ImageUpload.Image" class="label-block">Upload new image:</label>
-                            <input asp-for="ImageUpload.Image"/>
+                        </div>
+                        
+                        <div class="custom-file">
+                            <label asp-for="ImageUpload.Image">Upload new CV picture:</label>
+                            <input type="file" class="custom-file-input" asp-for="ImageUpload.Image" aria-describedby="fileHelpBlock">
+                            <label class="custom-file-label" asp-for="ImageUpload.Image">Choose image</label>
+                            <small id="fileHelpBlock" class="form-text text-muted">
+                                Valid formats are jpeg, jpg, png & gif.
+                            </small>
                             <span asp-validation-for="ImageUpload.Image" class="text-danger"></span>
                         </div>
 
@@ -46,6 +54,10 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     
     <script>
+        $(document).ready(function () {
+          bsCustomFileInput.init()
+        })
+            
         $(document).ready(function(){
           $(".fancybox").fancybox({
                 openEffect: "none",

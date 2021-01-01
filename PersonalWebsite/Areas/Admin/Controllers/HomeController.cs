@@ -15,10 +15,10 @@ namespace PersonalWebsite.Areas.Admin.Controllers
     [Authorize(Roles = "Administrator")]
     public class HomeController : Controller
     {
-        private readonly ILogger<PersonalWebsite.Controllers.HomeController> _logger;
+        private readonly ILogger<HomeController> _logger;
         private readonly ICVService _cvService;
 
-        public HomeController(ILogger<PersonalWebsite.Controllers.HomeController> logger, ICVService cvService) 
+        public HomeController(ILogger<HomeController> logger, ICVService cvService) 
         {
             _logger = logger;
             _cvService = cvService;

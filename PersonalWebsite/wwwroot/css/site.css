@@ -241,3 +241,7 @@ h2 {
 .label-block {
   display: block;
 }
+
+.user-specific-info {
+  font-weight: bold;
+}
