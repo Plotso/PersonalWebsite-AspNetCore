@@ -88,6 +88,7 @@ namespace PersonalWebsite.Controllers
         }
         
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(EducationModifyInputModel modifiedModel, string onSubmitAction)
         {
             if (onSubmitAction.IsNullOrEmpty() || onSubmitAction == "Cancel")

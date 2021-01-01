@@ -1,6 +1,6 @@
 ﻿namespace PersonalWebsite.Common
 {
-    public class GlobalConstants
+    public static class GlobalConstants
     {
         public const string AdministratorRoleName = "Administrator";
         

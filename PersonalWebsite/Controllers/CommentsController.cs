@@ -1,9 +1,11 @@
 ﻿namespace PersonalWebsite.Controllers
 {
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
     using Castle.Core.Internal;
     using Castle.Core.Logging;
+    using Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -21,7 +23,11 @@
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<CommentsController> _logger;
 
-        public CommentsController(ICommentsService commentsService, ICVService cvService, UserManager<ApplicationUser> userManager, ILogger<CommentsController> logger)
+        public CommentsController(
+            ICommentsService commentsService,
+            ICVService cvService,
+            UserManager<ApplicationUser> userManager,
+            ILogger<CommentsController> logger)
         {
             _commentsService = commentsService;
             _cvService = cvService;
@@ -59,9 +65,15 @@
         }
         
         [Authorize]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             var viewModel = _commentsService.GetById<CommentModifyInputModel>(id);
+            var isUserAuthorized = await IsUserAuthorized(viewModel.UserUserName); 
+            if (!isUserAuthorized)
+            {
+                return Unauthorized();
+            }
+            
             return View(viewModel);
         }
 
@@ -89,14 +101,21 @@
         }
 
         [Authorize]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var viewModel = _commentsService.GetById<CommentModifyInputModel>(id);
+            var isUserAuthorized = await IsUserAuthorized(viewModel.UserUserName); 
+            if (!isUserAuthorized)
+            {
+                return Unauthorized();
+            }
+            
             return View(viewModel);
         }
         
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(CommentModifyInputModel modifiedModel, string onSubmitAction)
         {
             if (onSubmitAction.IsNullOrEmpty() || onSubmitAction == "Cancel")
@@ -132,6 +151,14 @@
             };
             
             return View("All", viewModel);
+        }
+
+        private async Task<bool> IsUserAuthorized(string commentAuthor)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userRoles = await _userManager.GetRolesAsync(user);
+            return user.UserName == commentAuthor ||
+                   userRoles.Any(r => r == GlobalConstants.AdministratorRoleName);
         }
     }
 }

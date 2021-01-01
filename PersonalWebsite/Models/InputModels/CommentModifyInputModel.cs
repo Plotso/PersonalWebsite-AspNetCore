@@ -8,6 +8,8 @@ namespace PersonalWebsite.Models.InputModels
     {
         public int Id { get; set; }
         
+        public string UserUserName { get; set; }
+        
         [Required]
         public string Content { get; set; }
     }

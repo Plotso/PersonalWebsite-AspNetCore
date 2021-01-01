@@ -1,4 +1,5 @@
 @using Microsoft.AspNetCore.Identity
+@using PersonalWebsite.Common
 @using PersonalWebsite.Models.Data.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -6,6 +7,18 @@
 
 @{
     ViewData["Title"] = "Comments Page";
+
+    bool IsAdminOrAuthor(string author)
+    {
+        return IsCurrentUserAdmin() || IsCurrentUserTheAuthor(author);
+    }
+    
+    bool IsCurrentUserAdmin()
+    {
+        var user = UserManager.GetUserAsync(User).GetAwaiter().GetResult();
+        var roles = UserManager.GetRolesAsync(user).GetAwaiter().GetResult();
+        return roles.Any(r => r == GlobalConstants.AdministratorRoleName);
+    }
 
     bool IsCurrentUserTheAuthor(string author)
     {
@@ -58,7 +71,7 @@
                                         <time datetime="@comment.CreatedOn.ToString("O")"></time>
                                     </div>
                                 </div>
-                                @if (SignInManager.IsSignedIn(User) && IsCurrentUserTheAuthor(comment.UserUserName))
+                                @if (SignInManager.IsSignedIn(User) && IsAdminOrAuthor(comment.UserUserName))
                                 {
                                     <div class="text-muted small ml-3">
                                         <button type="button" class="btn btn-outline-success">
