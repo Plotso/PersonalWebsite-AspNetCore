@@ -2,6 +2,7 @@ namespace PersonalWebsite.Controllers
 {
     using System;
     using System.Threading.Tasks;
+    using Castle.Core.Internal;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
@@ -88,8 +89,13 @@ namespace PersonalWebsite.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Delete(SkillModifyInputModel modifiedModel)
+        public async Task<IActionResult> Delete(SkillModifyInputModel modifiedModel, string onSubmitAction)
         {
+            if (onSubmitAction.IsNullOrEmpty() || onSubmitAction == "Cancel")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
             if (!ModelState.IsValid)
             {
                 return View(modifiedModel);

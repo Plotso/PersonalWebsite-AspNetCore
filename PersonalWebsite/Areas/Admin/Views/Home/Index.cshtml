@@ -21,6 +21,13 @@
                 <i class="fa fa-map-marker" aria-hidden="true"></i> @Model.Location
             </li>
         </ul>
+        <div class="text-center">
+            <button type="button" class="btn btn-outline-success">
+                <a class="edit-cv-link" asp-action="Edit" title="Edit CV">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit 
+                </a>
+            </button>
+        </div>
         <img class="rounded-circle float-right" src="~/images/profilePictures/@Model.ProfileImageFileName" width=150 height=150>
     </div>
     <hr>
@@ -42,6 +49,9 @@
                                 <h6>
                                     <a class="page-link-green" asp-controller="Experience" asp-action="Edit" asp-route-id="@experience.Id" title="Edit experience">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="page-link-red" asp-controller="Experience" asp-action="Delete" asp-route-id="@experience.Id" title="Delete experience">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
                                     </a>
                                     @experience.Position - <span>@experience.Company</span>
                                 </h6>
@@ -80,7 +90,10 @@
                             <li>
                                 <h6>
                                     <a class="page-link-green" asp-controller="Education" asp-action="Edit" asp-route-id="@education.Id" title="Edit education">
-                                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="page-link-red" asp-controller="Education" asp-action="Delete" asp-route-id="@education.Id" title="Delete education">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
                                     </a>
                                     @education.Programme - <span>@education.School</span>
                                 </h6>
@@ -117,10 +130,13 @@
                             @foreach (var skill in skillGroup.Value)
                             {
                                 var actualSkill = Model.Skills.Where(s => s.Type == skillGroup.Key && s.Name == skill).FirstOrDefault();
-                                <li class="list-inline-item">@skill</li>
                                 <a class="page-link-green" asp-controller="Skills" asp-action="Edit" asp-route-id="@actualSkill.Id" title="Edit Skill">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </a>
+                                <a class="page-link-red" asp-controller="Skills" asp-action="Delete" asp-route-id="@actualSkill.Id" title="Delete Skill">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </a>
+                                <li class="list-inline-item">@skill</li>
                             }
                         </ul>
                     }

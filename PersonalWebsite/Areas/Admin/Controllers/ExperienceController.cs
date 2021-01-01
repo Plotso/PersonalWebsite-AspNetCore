@@ -90,8 +90,13 @@ namespace PersonalWebsite.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(ExperienceModifyInputModel modifiedModel)
+        public async Task<IActionResult> Delete(ExperienceModifyInputModel modifiedModel, string onSubmitAction)
         {
+            if (!String.IsNullOrEmpty(onSubmitAction) || onSubmitAction == "Cancel")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
             if (!ModelState.IsValid)
             {
                 return View(modifiedModel);
