@@ -12,7 +12,7 @@ namespace PersonalWebsite.Areas.Admin.Controllers
     using Services.Interfaces;
 
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public class HomeController : Controller
     {
         private readonly ILogger<PersonalWebsite.Controllers.HomeController> _logger;

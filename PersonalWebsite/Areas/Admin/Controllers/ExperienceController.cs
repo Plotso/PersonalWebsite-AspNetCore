@@ -12,7 +12,7 @@ namespace PersonalWebsite.Controllers
     using Services.Interfaces;
 
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public class ExperienceController : Controller
     {
         private readonly ICVService _cvService;

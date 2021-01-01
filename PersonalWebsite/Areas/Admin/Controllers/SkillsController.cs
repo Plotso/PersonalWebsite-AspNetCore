@@ -11,7 +11,7 @@ namespace PersonalWebsite.Controllers
     using Services.Interfaces;
 
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public class SkillsController : Controller
     {
         private readonly ICVService _cvService;

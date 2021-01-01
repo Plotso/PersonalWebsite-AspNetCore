@@ -10,7 +10,7 @@ namespace PersonalWebsite.Controllers
     using Services.Interfaces;
 
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public class EducationController : Controller
     {
         private readonly ICVService _cvService;
