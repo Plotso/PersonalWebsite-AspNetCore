@@ -25,7 +25,7 @@ namespace PersonalWebsite.Services
             return _mapper.Map<T>(skill);
         }
 
-        public async Task Delete(int skillId)
+        public async Task DeleteAsync(int skillId)
         {
             var skill = _skillsRepository.All().FirstOrDefault(e => e.Id == skillId);
             if (skill != null)
@@ -35,7 +35,7 @@ namespace PersonalWebsite.Services
             }
         }
 
-        public async Task Edit(SkillModifyInputModel modifiedModel)
+        public async Task EditAsync(SkillModifyInputModel modifiedModel)
         {
             var skill = _skillsRepository.All().FirstOrDefault(e => e.Id == modifiedModel.Id);
             if (skill != null)

@@ -59,3 +59,7 @@
         <input type="submit" class="btn btn-primary create-record-btn" value="Edit Education"/>
     </div>
 </form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

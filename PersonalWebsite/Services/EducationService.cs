@@ -25,7 +25,7 @@ namespace PersonalWebsite.Services
             return _mapper.Map<T>(education);
         }
 
-        public async Task Delete(int educationId)
+        public async Task DeleteAsync(int educationId)
         {
             var education = _educationEntityRepository.All().FirstOrDefault(e => e.Id == educationId);
             if (education != null)
@@ -35,7 +35,7 @@ namespace PersonalWebsite.Services
             }
         }
 
-        public async Task Edit(EducationModifyInputModel modifiedModel)
+        public async Task EditAsync(EducationModifyInputModel modifiedModel)
         {
             var education = _educationEntityRepository.All().FirstOrDefault(e => e.Id == modifiedModel.Id);
             if (education != null)

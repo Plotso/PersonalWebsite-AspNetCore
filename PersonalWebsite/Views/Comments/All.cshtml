@@ -1,10 +1,17 @@
 @using Microsoft.AspNetCore.Identity
 @using PersonalWebsite.Models.Data.Identity
 @inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 @model PersonalWebsite.Models.ViewModels.Comments.AllCommentsViewModel
 
 @{
     ViewData["Title"] = "Comments Page";
+
+    bool IsCurrentUserTheAuthor(string author)
+    {
+        var user = UserManager.GetUserAsync(User).GetAwaiter().GetResult();
+        return user.UserName == author;
+    }
 }
 
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -51,6 +58,21 @@
                                         <time datetime="@comment.CreatedOn.ToString("O")"></time>
                                     </div>
                                 </div>
+                                @if (SignInManager.IsSignedIn(User) && IsCurrentUserTheAuthor(comment.UserUserName))
+                                {
+                                    <div class="text-muted small ml-3">
+                                        <button type="button" class="btn btn-outline-success">
+                                            <a class="page-link-green" asp-action="Edit" asp-route-id="@comment.Id" title="Edit Comment">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit 
+                                            </a>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-danger">
+                                            <a class="page-link-red" asp-action="Delete" asp-route-id="@comment.Id" title="Delete Comment">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete 
+                                            </a>
+                                        </button>
+                                    </div>
+                                }
                                 <div class="text-muted small ml-3">
                                     <form id="votesForm" method="post"></form>
                                     <div>
@@ -84,6 +106,8 @@
 </div>
 
 @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
     <script>
         function sendVote(commentId, isUpVote) {
             var token = $("#votesForm input[name=__RequestVerificationToken]").val();

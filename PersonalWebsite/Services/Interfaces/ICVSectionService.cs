@@ -6,9 +6,9 @@ namespace PersonalWebsite.Services.Interfaces
     {
         T GetById<T>(int id);
 
-        Task Delete(int id);
+        Task DeleteAsync(int id);
 
-        Task Edit(TModify modifiedModel);
+        Task EditAsync(TModify modifiedModel);
         
         Task CreateAsync(TCreate inputModel, int cvId);
     }

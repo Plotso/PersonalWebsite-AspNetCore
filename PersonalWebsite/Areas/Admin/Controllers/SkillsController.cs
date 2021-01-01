@@ -71,7 +71,7 @@ namespace PersonalWebsite.Controllers
 
             try
             {
-                await _skillsService.Edit(modifiedModel);
+                await _skillsService.EditAsync(modifiedModel);
             }
             catch (Exception e)
             {
@@ -103,7 +103,7 @@ namespace PersonalWebsite.Controllers
 
             try
             {
-                await _skillsService.Delete(modifiedModel.Id);
+                await _skillsService.DeleteAsync(modifiedModel.Id);
             }
             catch (Exception e)
             {

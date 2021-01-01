@@ -1,0 +1,35 @@
+@model PersonalWebsite.Models.InputModels.CommentModifyInputModel
+@{
+    ViewData["Title"] = "Edit Comment";
+}
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        relative_urls: false,
+        remove_script_host : false,
+        convert_urls : true,
+        plugins: [
+            "image paste table link code media fullscreen wordcount searchreplace lists"
+        ]
+    });
+</script>
+
+<h3 class="page-heading">Edit comment</h3>
+<form asp-action="Edit" method="post">
+    <div>
+            <label asp-for="Content"></label>
+            <textarea asp-for="Content" class="form-control"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+
+    <hr/>
+    <div class="center-group">
+        <input type="submit" class="btn btn-primary create-record-btn" value="Edit Comment"/>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

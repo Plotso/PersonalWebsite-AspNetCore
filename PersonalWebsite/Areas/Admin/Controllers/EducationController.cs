@@ -70,7 +70,7 @@ namespace PersonalWebsite.Controllers
 
             try
             {
-                await _educationService.Edit(modifiedModel);
+                await _educationService.EditAsync(modifiedModel);
             }
             catch (Exception e)
             {
@@ -102,7 +102,7 @@ namespace PersonalWebsite.Controllers
 
             try
             {
-                await _educationService.Delete(modifiedModel.Id);
+                await _educationService.DeleteAsync(modifiedModel.Id);
             }
             catch (Exception e)
             {

@@ -7,8 +7,7 @@ namespace PersonalWebsite.Services
     using Data.Repositories;
     using Interfaces;
     using Models.Data;
-    using Models.Data.CVModels;
-    using PersonalWebsite.Data;
+    using Models.InputModels;
 
     public class CommentsService : ICommentsService
     {
@@ -30,6 +29,34 @@ namespace PersonalWebsite.Services
                 .Select(e => _mapper.Map<T>(e))
                 .ToArray();
             return result;
+        }
+
+        public T GetById<T>(int id)
+        {
+            var comment = _commentsRepository.All().FirstOrDefault(c => c.Id == id);
+            return _mapper.Map<T>(comment);
+        }
+
+        public async Task EditAsync(CommentModifyInputModel modifiedModel)
+        {
+            var comment = _commentsRepository.All().FirstOrDefault(c => c.Id == modifiedModel.Id);
+            if (comment != null)
+            {
+                comment.Content = modifiedModel.Content;
+
+                _commentsRepository.Update(comment);
+                await _commentsRepository.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var comment = _commentsRepository.All().FirstOrDefault(c => c.Id == id);
+            if (comment != null)
+            {
+                _commentsRepository.Delete(comment);
+                await _commentsRepository.SaveChangesAsync();
+            }
         }
 
         public async Task CreateAsync(string content, int cvId, string userId)

@@ -72,7 +72,7 @@ namespace PersonalWebsite.Controllers
 
             try
             {
-                await _experienceService.Edit(modifiedModel);
+                await _experienceService.EditAsync(modifiedModel);
             }
             catch (Exception e)
             {
@@ -104,7 +104,7 @@ namespace PersonalWebsite.Controllers
 
             try
             {
-                await _experienceService.Delete(modifiedModel.Id);
+                await _experienceService.DeleteAsync(modifiedModel.Id);
             }
             catch (Exception e)
             {

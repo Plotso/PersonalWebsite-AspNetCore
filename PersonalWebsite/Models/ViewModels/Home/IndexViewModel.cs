@@ -5,6 +5,7 @@
     using AutoMapper;
     using Common;
     using Data.CVModels;
+    using Ganss.XSS;
     using Mapping;
 
     public class IndexViewModel : IMapFrom<CV>
@@ -14,6 +15,8 @@
         public string Position { get; set; }
 
         public string ShortPresentation { get; set; }
+        
+        public string SanitizedPresentation => new HtmlSanitizer().Sanitize(ShortPresentation);
 
         public string Phone { get; set; }
 

@@ -8,7 +8,7 @@
     <div class="container general-information">
         <h1>@Model.Name</h1>
         <h4 id="position">@Model.Position</h4>
-        <p class="short-presentation">@Html.Raw(Model.ShortPresentation)</p>
+        <p class="short-presentation">@Html.Raw(Model.SanitizedPresentation)</p>
 
         <ul class="list-inline list-unstyled text-left">
             <li class="list-inline-item">
@@ -47,7 +47,7 @@
                                 </div>
                                 <hr>
                                 <div>
-                                    @Html.Raw(experience.Description)
+                                    @Html.Raw(experience.SanitizedDescription)
                                 </div>
                             </li>
                             <br>

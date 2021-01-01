@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     using Data.CVModels;
+    using Ganss.XSS;
     using Mapping;
 
     public class ExperienceViewModel : IMapFrom<Experience>
@@ -22,5 +23,7 @@
         public string Location { get; set; }
 
         public string Description { get; set; }
+        
+        public string SanitizedDescription => new HtmlSanitizer().Sanitize(Description);
     }
 }

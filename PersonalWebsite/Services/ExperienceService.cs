@@ -25,7 +25,7 @@ namespace PersonalWebsite.Services
             return _mapper.Map<T>(experience);
         }
 
-        public async Task Delete(int experienceId)
+        public async Task DeleteAsync(int experienceId)
         {
             var experience = _experienceRepository.All().FirstOrDefault(e => e.Id == experienceId);
             if (experience != null)
@@ -35,7 +35,7 @@ namespace PersonalWebsite.Services
             }
         }
 
-        public async Task Edit(ExperienceModifyInputModel modifiedModel)
+        public async Task EditAsync(ExperienceModifyInputModel modifiedModel)
         {
             var experience = _experienceRepository.All().FirstOrDefault(e => e.Id == modifiedModel.Id);
             if (experience != null)
