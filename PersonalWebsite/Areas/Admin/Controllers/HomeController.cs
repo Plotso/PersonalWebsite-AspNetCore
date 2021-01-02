@@ -24,7 +24,7 @@ namespace PersonalWebsite.Areas.Admin.Controllers
             _cvService = cvService;
         }
 
-        public IActionResult Index()  //ToDo: Add delete icon for routing to delete actions of each individual cv component
+        public IActionResult Index()
         {
             var viewModel = _cvService.GetFirstOrDefault<IndexViewModel>();
             return View(viewModel);

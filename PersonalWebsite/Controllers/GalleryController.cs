@@ -9,7 +9,7 @@ namespace PersonalWebsite.Controllers
     using Services;
     using Services.Interfaces;
 
-    public class GalleryController : Controller
+    public class GalleryController : Controller //ToDo: Add option for deleting images
     {
         private readonly IGalleryService _galleryService;
 
