@@ -150,10 +150,16 @@ h2 {
 
 .create-record-btn {
   background-color: rgb(64, 206, 64) !important;
+  border-color: rgb(64, 206, 64);
+}
+
+.create-record-btn:hover {
+  border-color: rgb(247, 248, 247);  
 }
 
 .delete-record-btn {
   background-color: rgb(157, 8, 8) !important;
+  border-color: rgb(157, 8, 8);
 }
 
 .center-group {
