@@ -1,19 +1,34 @@
 @using Microsoft.AspNetCore.Identity
+@using PersonalWebsite.Common
 @using PersonalWebsite.Models.Data.Identity
 @inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 @model PersonalWebsite.Models.ViewModels.GalleryViewModel
 
 @{
     ViewData["Title"] = "Gallery";
+    
+    bool IsCurrentUserAdmin()
+    {
+        var user = UserManager.GetUserAsync(User).GetAwaiter().GetResult();
+        var roles = UserManager.GetRolesAsync(user).GetAwaiter().GetResult();
+        return roles.Any(r => r == GlobalConstants.AdministratorRoleName);
+    }
 }
 
 <div id="gallery">
     <h2> A picture can be downloaded by clicking on it <i class="fa fa-mouse-pointer" aria-hidden="true"></i></h2>
     <div class="container gallery-container">
         <div class="row">
-            @if (SignInManager.IsSignedIn(User))
+            @if (SignInManager.IsSignedIn(User) && IsCurrentUserAdmin())
             {
+                    
                 <div class="center-custom">
+                    <button type="button" class="btn btn-outline-success user-page-button">
+                        <a class="edit-cv-link" asp-area="Admin" asp-controller="Gallery" asp-action="List" title="View List">
+                            View as list
+                        </a>
+                    </button>
                     <form asp-action="Upload" enctype="multipart/form-data">
                         <div>
                             <label asp-for="ImageUpload.Image" class="label-block">Upload new image:</label>
@@ -31,7 +46,6 @@
 
                         <input type="submit" value="Upload" class="btn btn-primary"/>
                     </form>
-
                 </div>
             }
         </div>
@@ -56,22 +70,6 @@
     <script>
         $(document).ready(function () {
           bsCustomFileInput.init()
-        })
-            
-        $(document).ready(function(){
-          $(".fancybox").fancybox({
-                openEffect: "none",
-                closeEffect: "none"
-            });
-            
-            $(".zoom").hover(function(){
-        		
-        		$(this).addClass('transition');
-        	}, function(){
-                
-        		$(this).removeClass('transition');
-        	});
-        });
-            
+        })            
     </script>
 }

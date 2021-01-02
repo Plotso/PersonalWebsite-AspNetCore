@@ -1,0 +1,53 @@
+@using Microsoft.AspNetCore.Identity
+@using PersonalWebsite.Models.Data.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@model PersonalWebsite.Models.ViewModels.GalleryViewModel
+
+@{
+    ViewData["Title"] = "Gallery";
+}
+
+<div id="gallery">
+    <h2> A list of all images</h2>
+    <div class="container gallery-container">
+        <div class="row">
+            @foreach (var imageName in @Model.ImagesNames)
+            {
+                <div class="col-sm-4">
+                    <div >
+                        <figure class="figure">
+                            <img src="~/images/gallery/@imageName" class="figure-img img-fluid rounded" alt="@imageName">
+                            <figcaption class="figure-caption">
+                                @imageName
+                                <button type="button" class="btn btn-danger " onclick="return confirm(`Are you sure you want to delete @imageName?`)">
+                                    <a class="page-link-red" asp-controller="Gallery" asp-action="Delete" asp-route-imageName="@imageName" title="Delete">
+                                        Delete
+                                    </a>
+                                </button>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <!---
+                <div class="media">
+                    <img class="mr-3" src="~/images/gallery/" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h5 class="mt-0">@imageName</h5>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    </div>
+                </div>
+                ---->
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <script>
+        $(document).ready(function () {
+          bsCustomFileInput.init()
+        })            
+    </script>
+}

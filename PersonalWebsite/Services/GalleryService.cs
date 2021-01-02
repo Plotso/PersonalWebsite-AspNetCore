@@ -35,12 +35,17 @@ namespace PersonalWebsite.Services
             return imagesNames;
         }
 
-        public async Task UploadImage(GalleryInputModel imageInput)
+        public async Task UploadImageAsync(GalleryInputModel imageInput)
         {
             var fileName = imageInput.Image.FileName;
             var uniqueFileName = Guid.NewGuid() + fileName;
 
             await _fileManagementService.SaveImageAsync("gallery", uniqueFileName, imageInput.Image);
+        }
+
+        public void DeleteImage(string imageName)
+        {
+            _fileManagementService.DeleteGalleryImage(imageName);
         }
     }
 }

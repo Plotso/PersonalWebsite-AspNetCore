@@ -40,5 +40,20 @@ namespace PersonalWebsite.Services
                 throw new InvalidOperationException("Image is not in valid format - ending with jpeg/jpg/png/gif");
             }
         }
+        
+        public void DeleteGalleryImage(string imageName)
+        {
+            var galleryFolder = Path.Combine(_webHostEnvironment.WebRootPath, @"images\gallery");
+            var filePath = Path.Combine(galleryFolder, imageName);
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+            else
+            {
+                throw new InvalidOperationException($@"Image not found gallery\{imageName}");
+            }
+        }
     }
 }

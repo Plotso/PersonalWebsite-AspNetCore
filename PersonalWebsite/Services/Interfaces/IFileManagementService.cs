@@ -5,6 +5,8 @@ namespace PersonalWebsite.Services.Interfaces
 
     public interface IFileManagementService
     {
+        void DeleteGalleryImage(string imageName);
+        
         Task SaveImageAsync(string imageFolderName, string uniqueFileName, IFormFile image);
     }
 }

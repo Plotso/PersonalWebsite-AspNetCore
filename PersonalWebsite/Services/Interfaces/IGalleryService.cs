@@ -8,6 +8,8 @@ namespace PersonalWebsite.Services.Interfaces
     {
         IEnumerable<string> GetAllImages();
 
-        Task UploadImage(GalleryInputModel imageInput);
+        Task UploadImageAsync(GalleryInputModel imageInput);
+        
+        void DeleteImage(string imageName);
     }
 }

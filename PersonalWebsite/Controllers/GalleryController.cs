@@ -34,7 +34,7 @@ namespace PersonalWebsite.Controllers
         {
             if (ModelState.IsValid && viewModel.ImageUpload != null)
             {
-                await _galleryService.UploadImage(viewModel.ImageUpload);
+                await _galleryService.UploadImageAsync(viewModel.ImageUpload);
             }
 
             return RedirectToAction(nameof(All));
