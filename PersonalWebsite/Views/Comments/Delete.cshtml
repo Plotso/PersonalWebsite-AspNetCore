@@ -6,7 +6,6 @@
 <h3 class="delete-page-heading">Delete comment</h3>
 <form asp-action="Delete" method="post">
     <div>
-        <label asp-for="Content"></label>
         <textarea asp-for="Content" class="form-control" readonly></textarea>
         <span asp-validation-for="Content" class="text-danger"></span>
     </div>

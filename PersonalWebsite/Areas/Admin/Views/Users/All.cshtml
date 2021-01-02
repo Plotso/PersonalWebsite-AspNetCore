@@ -45,19 +45,26 @@
                                     <input type="checkbox" id="role-toggle-@user.UserName" data-toggle="toggle" data-on="Admin" data-off="User" data-onstyle="success" data-offstyle="danger" disabled>
                                 }
                             </p>
-                            <button type="button" class="btn btn-outline-success" onclick="return confirm(`Are you sure you want to change user role?`)">
-                                <a class="edit-cv-link" asp-controller="Users" asp-action="EditUserRole" asp-route-email="@user.Email" title="Change Role">
-                                    Change Role
-                                </a>
-                            </button>
-                            @{
-                                var deleteButtonText = @user.IsDeleted ? "Recover Deleted User" : "Delete User";
-                            }
-                            <button type="button" class="btn btn-outline-danger" onclick="return confirm(`Are you sure you want to change user status?`)">
-                                 <a class="page-link-red" asp-controller="Users" asp-action="EditUserIsDeletedStatus" asp-route-email="@user.Email" title="Change IsDeleted">
-                                     @deleteButtonText
-                                 </a>
-                             </button>
+                            <div class="btn-group btn-group-sm">
+                                <span class="btn-group mr-2">
+                                    <button type="button" class="btn btn-outline-success" onclick="return confirm(`Are you sure you want to change user role?`)">
+                                        <a class="edit-cv-link" asp-controller="Users" asp-action="EditUserRole" asp-route-email="@user.Email" title="Change Role">
+                                            Change Role
+                                        </a>
+                                    </button>
+                                </span>
+                                @{
+                                    var deleteButtonText = @user.IsDeleted ? "Recover Deleted User" : "Delete User";
+                                }
+                                <span class="btn-group mr-2">
+                                    <button type="button" class="btn btn-outline-danger" onclick="return confirm(`Are you sure you want to change user status?`)">
+                                        <a class="page-link-red" asp-controller="Users" asp-action="EditUserIsDeletedStatus" asp-route-email="@user.Email" title="Change IsDeleted">
+                                            @deleteButtonText
+                                        </a>
+                                    </button>
+                                </span>
+
+                            </div>
                             
                         </div>
                     </div>

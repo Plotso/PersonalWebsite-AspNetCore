@@ -97,7 +97,6 @@ namespace PersonalWebsite.Areas.Admin.Controllers
         
         private async Task<bool> IsAdminAsync(ApplicationUser user)
         {
-            //var user = await _userManager.FindByIdAsync(userModel.Id);
             var userRoles = await _userManager.GetRolesAsync(user);
             return userRoles.Any(r => r == GlobalConstants.AdministratorRoleName);
         }
