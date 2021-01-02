@@ -47,7 +47,7 @@
                             </p>
                             <div class="btn-group btn-group-sm">
                                 <span class="btn-group mr-2">
-                                    <button type="button" class="btn btn-outline-success" onclick="return confirm(`Are you sure you want to change user role?`)">
+                                    <button type="button" class="btn btn-outline-success user-page-button" onclick="return confirm(`Are you sure you want to change user role?`)">
                                         <a class="edit-cv-link" asp-controller="Users" asp-action="EditUserRole" asp-route-email="@user.Email" title="Change Role">
                                             Change Role
                                         </a>
@@ -57,7 +57,7 @@
                                     var deleteButtonText = @user.IsDeleted ? "Recover Deleted User" : "Delete User";
                                 }
                                 <span class="btn-group mr-2">
-                                    <button type="button" class="btn btn-outline-danger" onclick="return confirm(`Are you sure you want to change user status?`)">
+                                    <button type="button" class="btn btn-outline-danger user-page-button" onclick="return confirm(`Are you sure you want to change user status?`)">
                                         <a class="page-link-red" asp-controller="Users" asp-action="EditUserIsDeletedStatus" asp-route-email="@user.Email" title="Change IsDeleted">
                                             @deleteButtonText
                                         </a>

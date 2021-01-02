@@ -246,6 +246,6 @@ h2 {
   font-weight: bold;
 }
 
-.user-page-buttons {
-  display: inline;
+.user-page-button {
+  border-radius: 8px !important;
 }
