@@ -50,7 +50,7 @@
                 <textarea asp-for="InputModel.Content" class="form-control"></textarea>
                 <span asp-validation-for="InputModel.Content" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-secondary ">Comment</button>
+            <button type="submit" class="btn btn-secondary comment-button">Comment</button>
         </form>
     </div>
     <hr>
@@ -68,7 +68,7 @@
                                 <div class="media-body ml-3">
                                     @comment.UserUserName
                                     <div class="text-muted small">
-                                        <time datetime="@comment.CreatedOn.ToString("O")"></time>
+                                       @comment.CreatedOn.ToString("dddd, dd MMMM yyyy HH:mm:ss")
                                     </div>
                                 </div>
                                 @if (SignInManager.IsSignedIn(User) && IsAdminOrAuthor(comment.UserUserName))
@@ -124,7 +124,6 @@
     <script>
         function sendVote(commentId, isUpVote) {
             var token = $("#votesForm input[name=__RequestVerificationToken]").val();
-            console.log(token);
             var json = { commentId: commentId, isUpVote: isUpVote };
             var votesCountDivID = "#votesCount" + commentId.toString()
             $.ajax({

@@ -205,13 +205,13 @@ h2 {
   color: rgb(77, 167, 226);
 }
 
-.short-presentation {
+.general-information p{
   margin-right: 15%;
 }
 
-.gallery-image{
-  margin-top:20px; /*to have the space above the image*/
-  margin-bottom:20px; /*to have the space under the image*/
+#gallery img {
+  margin-top:5px; /*to have the space above the image*/
+  margin-bottom:5px; /*to have the space under the image*/
 }
 
 .error-code-image {
@@ -235,6 +235,7 @@ h2 {
   #gallery img {
     max-width: 100%;
     height: auto;
+    margin: 5px;
   }
 }
 
@@ -248,4 +249,10 @@ h2 {
 
 .user-page-button {
   border-radius: 8px !important;
+}
+
+.comment-button {
+  margin-top: 5px;
+  margin-left: 50%;
+  margin-right: 50%;
 }

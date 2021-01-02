@@ -8,7 +8,7 @@
     <div class="container general-information">
         <h1>@Model.Name</h1>
         <h4 id="position">@Model.Position</h4>
-        <p class="short-presentation">@Html.Raw(Model.SanitizedPresentation)</p>
+        @Html.Raw(Model.SanitizedPresentation)
 
         <ul class="list-inline list-unstyled text-left">
             <li class="list-inline-item">
@@ -38,7 +38,7 @@
                                 <div class="activity-details">
                                     <ul class="list-inline list-unstyled text-left">
                                         <li class="list-inline-item">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i> @experience.FromDate - @experience.ToDate
+                                            <i class="fa fa-calendar" aria-hidden="true"></i> @experience.FromDate.ToString("MMMM yyyy") - @experience.ToDate.ToString("MMMM yyyy")
                                         </li>
                                         <li class="list-inline-item">
                                             <i class="fa fa-map-marker" aria-hidden="true"></i> @experience.Location
@@ -72,7 +72,7 @@
                                                 <i class="fa fa-university" aria-hidden="true"></i> @education.Degree
                                             </li>
                                             <li class="list-inline-item">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i> @education.FromDate - @education.ToDate
+                                                <i class="fa fa-calendar" aria-hidden="true"></i> @education.FromDate.ToString("MMMM yyyy") - @education.ToDate.ToString("MMMM yyyy")
                                             </li>
                                             <li class="list-inline-item">
                                                 <i class="fa fa-graduation-cap" aria-hidden="true"></i> GPA - @education.Score
