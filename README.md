@@ -58,3 +58,6 @@ Those commands are required in order for the project to correctly build the data
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Sneak Peak at home page
+![HomePagePresentation](https://github.com/Plotso/PersonalWebsite-AspNetCore/blob/main/HomePagePresentation.PNG?raw=true)
