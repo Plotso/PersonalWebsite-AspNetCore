@@ -1,34 +1,83 @@
+@using System.Linq
 @model PersonalWebsite.Models.ViewModels.Users.AllUsersViewModel
 @{
     ViewData["Title"] = "Users";
 }
 
 <ul class="list-unstyled">
-@foreach (var user in Model.Users)
-{
-    <li class="media my-4">
-        <img class="mr-3" src="@user.ProfilePictureUrl" width="75" height="75" alt="profile-picutre">
-        <div class="media-body">
-            <h5 class="mt-0 mb-1">@user.UserName</h5>
-            <div class="container">
-              <div class="row">
-                <div class="col-sm">
-                    <span class="user-specific-info">Registered on:</span> <span>@user.CreatedOn</span>
+    @foreach (var user in Model.Users)
+    {
+        <li class="media my-4">
+            <img class="mr-3" src="@user.ProfilePictureUrl" width="75" height="75" alt="profile-picutre">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1">@user.UserName</h5>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <span class="user-specific-info">Registered on:</span> <span>@user.CreatedOn</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p>
+                            <span class="user-specific-info">User Status:</span>
+                            @if (@user.IsDeleted)
+                            {
+                                <input type="checkbox" id="role-toggle-@user.UserName" data-toggle="toggle" data-on="Active" data-off="Deleted" data-onstyle="success" data-offstyle="danger" disabled>
+                            }
+                            else
+                            {
+                                <input type="checkbox" id="role-toggle-@user.UserName" data-toggle="toggle" data-on="Active" data-off="Deleted" data-onstyle="success" data-offstyle="danger" checked disabled>
+                            }
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p>
+                                <span class="user-specific-info">User Role: </span>
+                                @if (@user.IsAdmin)
+                                {
+                                    <input type="checkbox" id="role-toggle-@user.UserName" data-toggle="toggle" data-on="Admin" data-off="User" data-onstyle="success" data-offstyle="danger" checked disabled>
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="role-toggle-@user.UserName" data-toggle="toggle" data-on="Admin" data-off="User" data-onstyle="success" data-offstyle="danger" disabled>
+                                }
+                            </p>
+                            <button type="button" class="btn btn-outline-success" onclick="return confirm(`Are you sure you want to change user role?`)">
+                                <a class="edit-cv-link" asp-controller="Users" asp-action="EditUserRole" asp-route-email="@user.Email" title="Change Role">
+                                    Change Role
+                                </a>
+                            </button>
+                            @{
+                                var deleteButtonText = @user.IsDeleted ? "Recover Deleted User" : "Delete User";
+                            }
+                            <button type="button" class="btn btn-outline-danger" onclick="return confirm(`Are you sure you want to change user status?`)">
+                                 <a class="page-link-red" asp-controller="Users" asp-action="EditUserIsDeletedStatus" asp-route-email="@user.Email" title="Change IsDeleted">
+                                     @deleteButtonText
+                                 </a>
+                             </button>
+                            
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-3">
-                     <span class="user-specific-info">IsDeleted:</span> <span>@user.IsDeleted</span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-3">
-                    <span class="user-specific-info">IsAdmin:</span> <span>@user.IsAdmin</span>
-                </div>
-              </div>
             </div>
-        </div>
-    </li>
-    <hr>
-}
+        </li>
+        <hr>
+    }
 </ul>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>    
+        function changeUserRole(userEmail){
+            let msg = "Are you sure you want to change the user role of " + email + "?"
+            if (confirm(msg)){
+                let url = '@Url.Action("EditUserRole", "Users", new {email = "__id__"})';
+                window.location.href = url.replace('__id__', userEmail);                
+            }
+        }
+    </script>
+}

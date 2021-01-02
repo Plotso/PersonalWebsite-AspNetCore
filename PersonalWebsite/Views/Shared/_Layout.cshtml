@@ -1,6 +1,19 @@
-﻿@using PersonalWebsite.Services
-@using PersonalWebsite.Services.Interfaces
+﻿@using PersonalWebsite.Services.Interfaces
+@using PersonalWebsite.Models.Data.Identity
+@using Microsoft.AspNetCore.Identity
+@using PersonalWebsite.Common
 @inject INameService NameService
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    bool IsCurrentUserAdmin()
+    {
+        var user = UserManager.GetUserAsync(User).GetAwaiter().GetResult();
+        var roles = UserManager.GetRolesAsync(user).GetAwaiter().GetResult();
+        return roles.Any(r => r == GlobalConstants.AdministratorRoleName);
+    }
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,13 +41,19 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Gallery" asp-action="All">Gallery</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Comments" asp-action="All">Comments</a>
+                        </li>
+                        @if (SignInManager.IsSignedIn(User) && IsCurrentUserAdmin())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Users" asp-action="All">Users</a>
+                            </li>
+                        }
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Comments" asp-action="All">Comments</a>
                         </li>
                     </ul>
                 </div>
@@ -49,13 +68,15 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - PersonalWebsite - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @DateTime.UtcNow.Year - PersonalWebsite - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js" referrerpolicy="origin"></script>
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

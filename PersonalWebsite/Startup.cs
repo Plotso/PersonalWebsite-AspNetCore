@@ -64,6 +64,7 @@ namespace PersonalWebsite
             services.AddTransient<ICVSectionService<ExperienceCreateInputModel, ExperienceModifyInputModel>, ExperienceService>();
             services.AddTransient<ICVSectionService<EducationCreateInputModel, EducationModifyInputModel>, EducationService>();
             services.AddTransient<ICVSectionService<SkillCreateInputModel, SkillModifyInputModel>, SkillsService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
