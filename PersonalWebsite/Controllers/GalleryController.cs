@@ -29,7 +29,7 @@ namespace PersonalWebsite.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Upload(GalleryViewModel viewModel)
         {
             if (ModelState.IsValid && viewModel.ImageUpload != null)
